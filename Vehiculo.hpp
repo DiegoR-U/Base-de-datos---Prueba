@@ -1,3 +1,5 @@
+//CUIDADO - NO COMPILA BIEN
+
 #ifndef Vehiculo_HPP
 #define Vehiculo_HPP
 
