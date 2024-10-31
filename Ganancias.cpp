@@ -52,7 +52,8 @@ void Ganancias::Sumar_utilidad()
 		
 		util = ganancia-perdidas;
 		
-		WRITE << "Dia N: " << dia << "   -   " << "Utilidad: " << util << "\n\n";
+		WRITE << dia << "\n"; 
+		WRITE << util << "\n\n";
 		
 		READ.close();
 		WRITE.close();
@@ -64,11 +65,11 @@ void Ganancias::Modificar_utilidades()
 	{
 		temp = new char[30];
 		
-		READ.open("Ganancias.txt");
-		WRITE.open("Ganancias_remp.txt", std::ios::app);
+		READ.open("Utilidades.txt");
+		WRITE.open("Utilidades_temp.txt", std::ios::app);
 		
 		std::cout << "Pon el dia que quieres modificar sus ganancias" << "\n\n";
-		std::cin >> temp;
+		std::cin >> ganancia;
 		std::cout << "\n\n";
 		
 		for (int i=0; i<30; i++)
@@ -89,10 +90,10 @@ void Ganancias::Modificar_utilidades()
 		{
 			char *temporal = new char[incremento+1];
 			temporal = dia;
-			READ >> dia;
+			READ >> perdidas;
 			READ >> util;
 			
-			if (temp == dia)
+			if (perdidas == ganancia)
 			{
 				std::cout << "Quieres modificar la utilidad -> s (si) o n (no)" << "\n\n";
 				std::cin >> confirmacion;
@@ -103,7 +104,8 @@ void Ganancias::Modificar_utilidades()
 					std::cout << "\n\n";
 				}
 				
-				WRITE << "Dia N: " << dia << "   -   " << "Utilidad: " << util << "\n\n";
+				WRITE << perdidas << "\n"; 
+				WRITE << util << "\n\n";
 				
 				incremento++;
 			}
@@ -111,7 +113,8 @@ void Ganancias::Modificar_utilidades()
 			{
 				if (temporal != dia)
 				{
-					WRITE << "Dia N: " << dia << "   -   " << "Utilidad: " << util << "\n\n";
+					WRITE << perdidas << "\n"; 
+					WRITE << util << "\n\n";
 				}
 			}
 		}
@@ -123,8 +126,8 @@ void Ganancias::Modificar_utilidades()
 		WRITE.close();
 		READ.close();
 		
-		std::remove("Ganancias.txt");
-		std::rename("Ganancias_remp.txt", "Ganancias.txt");
+		std::remove("Utilidades.txt");
+		std::rename("Utilidades_temp.txt", "Utilidades.txt");
 		
 		delete [] temp;
 		temp = nullptr;
@@ -134,14 +137,13 @@ void Ganancias::Mostrar_utilidades()
 	{
 		temp = new char[10];
 		
-		READ.open("Ganancias.txt");
+		READ.open("Utilidades.txt");
 		
 		while (!READ.eof())
 		{
-			READ >> temp;
-			READ >> util;
-			std::cout << "Dia N: " << temp << "   -   " << "Utilidad: " << util << "\n\n";
-
+			READ >> temp >> util;
+			std::cout << temp << "\n"; 
+			std::cout << util << "\n\n";
 		}
 		
 		READ.close();
