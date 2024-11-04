@@ -1,22 +1,21 @@
-//CUIDADO - NO COMPILA BIEN
-
-#ifndef Vehiculo_HPP
-#define Vehiculo_HPP
-
+#include <fstream>
+#include <iostream>
 class Vehiculo{
 public:
-	//Atributos
-	int id;
-	char *modelo, *matricula, *estado;
 	
-	//constructor
-	Vehiculo();
+	explicit Vehiculo();
 	
-	//Funciones
-	void agregarIDVehiculo();
-	void agregarModelo();
-	void agregarMatricula();
-	void estadoVehiculo();
+	void agregarVehiculo();
+	void quitarVehiculo();
+	void asignarVehiculo();
+	void modificarDatos();
 	void mostrarDatos();
+	
+private:
+
+	int id;
+	char *modelo;
+	char *matricula;
+	char *estado;
+	
 };
-#endif //ClaseVehiculo_HPP
