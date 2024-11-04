@@ -9,5 +9,4 @@ class ingreso{
         int m;
         int y;
         ingreso();
-        }
 };
