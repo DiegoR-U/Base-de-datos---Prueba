@@ -1,7 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include "Empleado.hpp"
-#include "Ganancias.hpp"
 #include "Menu.hpp"
 
 

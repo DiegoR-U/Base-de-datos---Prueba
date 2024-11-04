@@ -1,7 +1,10 @@
-#include <iostream>
-#include <fstream>
+#ifndef Ganancias_h
+#define Ganancias_h
 
-class Ganancias{
+#include <fstream>
+#include "Complemento.hpp"
+
+class Ganancias : public Complemento{
 	public:
 
 	explicit Ganancias();
@@ -12,11 +15,9 @@ class Ganancias{
 	private:
 	std::ifstream READ;
 	std::ofstream WRITE;
+	Complemento comp;
 	int ganancia;
 	int perdidas;
-	int util;
-	int incremento;
 	char *dia;
-	char *temp;
-	char confirmacion;
 };
+#endif

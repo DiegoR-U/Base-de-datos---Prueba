@@ -1,8 +1,3 @@
-#include <iostream>
-#include "Empleado.hpp"
-#include "Ganancias.hpp"
-#include "Menu.hpp"
-
 #ifdef _WIN32
     //#include <windows.h>
     #define CLEAR_COMMAND "cls"
@@ -12,6 +7,7 @@
     #define CLEAR_COMMAND "clear"
 #endif
 
+#include "Menu.hpp"
 
 Menu_de_inicio::Menu_de_inicio()
 	{
@@ -20,19 +16,39 @@ Menu_de_inicio::Menu_de_inicio()
 	
 void Menu_de_inicio::Mostrar_menu()
 	{
-		std::cout << "                    ~~~BASE DE DATOS~~~                    " << "\n\n";
-		std::cout << "1. Empleados" << "\n\n";
-		std::cout << "2. Vehiculos" << "\n\n";
-		std::cout << "3. Ganancias" << "\n\n";
-		std::cout << "4. Inscripcion" << "\n\n";
-		std::cout << "5. Salir" << "\n\n";
+		//MENU PRINCIPAL
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                              -------------- 					                            " << std::endl;
+		std::cout << "					                             | 1. Empleados |					                            " << std::endl;
+		std::cout << "					                              -------------- 					                            " << std::endl;
+		std::cout << "					                             | 2. Vehiculos |					                            " << std::endl;
+		std::cout << "					                              -------------- 					                            " << std::endl;
+		std::cout << "					                             | 3. Ganancias |					                            " << std::endl;
+		std::cout << "					                              -------------- 					                            " << std::endl;
+		std::cout << "					                             | 4. Formato   |					                            " << std::endl;
+		std::cout << "					                              -------------- 					                            " << std::endl;
+		std::cout << "					                             | 5. Salir     |					                            " << std::endl;
+		std::cout << "					                              -------------- 					                            " << "\n\n\n";
 		
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
 		do
 		{
-		std::cout << "Elige la opcion a tomar: ";
-		std::cin >> Elegir_funcion;
+			std::cout << "					                        Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
 		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5);
 		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
 		switch (Elegir_funcion)
 		{
 			case 1: std::system(CLEAR_COMMAND);
@@ -53,7 +69,7 @@ void Menu_de_inicio::Mostrar_menu()
 					break;
 			case 5: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					std::cout << "Programa terminado";
+					std::cout << "Programa terminado" << std::endl;
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
@@ -61,20 +77,41 @@ void Menu_de_inicio::Mostrar_menu()
 	
 void Menu_de_inicio::Menu_Empleados()
 	{
-		std::cout << "                    ~~~BASE DE DATOS - EMPLEADOS~~~                    " << "\n\n";
-		std::cout << "1. Listar empleados" << "\n\n";
-		std::cout << "2. Agregar empleados" << "\n\n";
-		std::cout << "3. Quitar empleados" << "\n\n";
-		std::cout << "4. Mostrar informacion de empleados" << "\n\n";
-		std::cout << "5. Modificar informacion empleados" << "\n\n";
-		std::cout << "6. Salir" << "\n\n";
-		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 1. Lista de emplados     |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 2. Añadir empleado       |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 3. Quitar empleado       |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << std::endl;
+		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+
+
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
 		do
 		{
-		std::cout << "Elige la opcion a tomar: ";
-		std::cin >> Elegir_funcion;
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
 		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
 		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
 		switch (Elegir_funcion)
 		{
 			case 1: std::system(CLEAR_COMMAND);
@@ -107,30 +144,64 @@ void Menu_de_inicio::Menu_Empleados()
 
 void Menu_de_inicio::Menu_Vehiculos()
 	{
-		std::cout << "                    ~~~BASE DE DATOS - VEHICULOS~~~                    " << "\n\n";
-		std::cout << "1. Agregar ID vehiculo" << "\n\n";
-		std::cout << "2. Agregar modelo" << "\n\n";
-		std::cout << "3. Agregar matricula" << "\n\n";
-		std::cout << "4. Estado vehiculo" << "\n\n";
-		std::cout << "5. Mostrar Datos" << "\n\n";
-		std::cout << "6. Salir" << "\n\n";
+		//MENU DE VEHICULOS
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                         ------------------------ 					                        " << std::endl;
+		std::cout << "					                        | 1. Agregar ID vehiculo |					                        " << std::endl;
+		std::cout << "					                         ------------------------ 					                        " << std::endl;
+		std::cout << "					                        | 2. Agregar modelo      |					                        " << std::endl;
+		std::cout << "					                         ------------------------ 					                        " << std::endl;
+		std::cout << "					                        | 3. Agregar matricula   |					                        " << std::endl;
+		std::cout << "					                         ------------------------ 					                        " << std::endl;
+		std::cout << "					                        | 4. Estado vehiculo     |					                        " << std::endl;
+		std::cout << "					                         ------------------------ 					                        " << std::endl;
+		std::cout << "					                        | 5. Mostrar Datos       |					                        " << std::endl;
+		std::cout << "					                         ------------------------ 					                        " << std::endl;
+		std::cout << "					                        | 5. Salir               |					                        " << std::endl;
+		std::cout << "					                         ------------------------ 					                        " << "\n\n\n";
 		
 	}
 	
 void Menu_de_inicio::Menu_Ganancias()
 	{
-		std::cout << "                    ~~~BASE DE DATOS - GANANCIAS~~~                    " << "\n\n";
-		std::cout << "1. Sumar utilidad" << "\n\n";
-		std::cout << "2. Modificar utilidad" << "\n\n";
-		std::cout << "3. Ver utilidad" << "\n\n";
-		std::cout << "4. Salir" << "\n\n";
+		//MENU PRINCIPAL
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                         ----------------------- 					                        " << std::endl;
+		std::cout << "					                        | 1. Sumar utilidad     |					                        " << std::endl;
+		std::cout << "					                         ----------------------- 					                        " << std::endl;
+		std::cout << "					                        | 2. Modificar utilidad |					                        " << std::endl;
+		std::cout << "					                         ----------------------- 					                        " << std::endl;
+		std::cout << "					                        | 3. Ver utilidad       |					                        " << std::endl;
+		std::cout << "					                         ----------------------- 					                        " << std::endl;
+		std::cout << "					                        | 4. Salir              |					                        " << std::endl;
+		std::cout << "					                         ----------------------- 					                        " << "\n\n\n";
 		
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
 		do
 		{
-		std::cout << "Elige la opcion a tomar: ";
-		std::cin >> Elegir_funcion;
+			std::cout << "					                        Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
 		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4);
 		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
 		switch (Elegir_funcion)
 		{
 			case 1: std::system(CLEAR_COMMAND);
@@ -155,8 +226,20 @@ void Menu_de_inicio::Menu_Ganancias()
 	
 void Menu_de_inicio::Menu_Inscripcion()
 	{
-		std::cout << "                    ~~~BASE DE DATOS - GANANCIAS~~~                    " << "\n\n";
-		std::cout << "1. Consultar precios" << "\n\n";
-		std::cout << "2. Modificar precios" << "\n\n";
-		std::cout << "3. Salir" << "\n\n";
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                          ---------------------- 					                        " << std::endl;
+		std::cout << "					                         | 1. Consultar precios |					                        " << std::endl;
+		std::cout << "					                          ---------------------- 					                        " << std::endl;
+		std::cout << "					                         | 2. Modificar precios |					                        " << std::endl;
+		std::cout << "					                          ---------------------- 					                        " << std::endl;
+		std::cout << "					                         | 3. Salir             |					                        " << std::endl;
+		std::cout << "					                          ---------------------- 					                        " << "\n\n\n";
+
 	}

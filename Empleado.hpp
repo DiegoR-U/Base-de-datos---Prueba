@@ -1,5 +1,8 @@
-#include <iostream>
+#ifndef Empleados_h
+#define Empleados_h
+
 #include <fstream>
+#include "Complemento.hpp"
 
 class Empleados{
 	public:
@@ -14,16 +17,10 @@ class Empleados{
 	private:
 	std::ifstream LECTURA;
 	std::ofstream ESCRITURA;
+	Complemento comp;
 	char *nombre;
 	char *correo;
-	char *temporal_char;
-	char *temporal_char2;
-	char Confirmacion;
-	bool Comprobacion;
 	int telefono;
-	int ID;
-	int ID_tel_Comprobacion;
-	int incremento;
-	int salida;
-	int size;
+	int DNI;
 };
+#endif
