@@ -8,4 +8,10 @@ class registro{
   int y;
   int inversion;
   registro();
+    edit()
+      editnombre();
+      editfecha():
+        editd();
+        editm();
+        edity();
 }
