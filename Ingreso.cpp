@@ -10,6 +10,11 @@ ingreso::ingreso(float _ingreso, float _gasto, int _d, int _m, int _y){
 }
 ingreso::editingreso(float x){
     ingreso = x;
+    neto = ingreso-gasto;
+}
+ingreso::editgasto(float x){
+    gasto = x:
+    neto = ingreso-gasto;
 }
 registro::editd(int x){
   d = x;
