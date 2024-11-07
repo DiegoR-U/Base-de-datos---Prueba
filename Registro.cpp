@@ -1,6 +1,8 @@
 #include "registro.hpp"
 registro::registro(char _nombre[100], int _d, int _m, int _y, int _inversion){
-  delete []nombre;
+  if(nombre != nullptr){
+    delete []nombre;
+  }
   int count{0};
   for(int i = 0; i < 100; i++){
     count++;
@@ -19,7 +21,9 @@ registro::registro(char _nombre[100], int _d, int _m, int _y, int _inversion){
   inversion = _inversion;
 }
 registro::editnombre(char _nombre[100]){
-  delete []nombre;
+  if(nombre != nullptr){
+    delete []nombre;
+  }
   int count{0};
   for(int i = 0; i < 100; i++){
     count++;
