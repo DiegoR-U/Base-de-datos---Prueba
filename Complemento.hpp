@@ -14,6 +14,7 @@ class Complemento{
 	void Copiar_Puntero(char *&x, char *&b, int c);
 	bool Comparar_Punteros(char *&x, char *&b, int c);
 	bool Contenido_archivo(std::ifstream &x);
+	void Puntero_Cadena(char *&x, int c, char cad[]);
 	
 	private:
 	char *temporal;
