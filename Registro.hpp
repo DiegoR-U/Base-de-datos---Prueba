@@ -1,14 +1,17 @@
 #include <iostream>
 #include <fstream>
 class registro{
-  public:
+private:
   char* nombre;
+  int nombrelen;
   int d;
   int m;
   int y;
   int inversion;
+public:
   registro();
-    edit()
+  borrarregistro();
+    edit();
       editnombre();
       editfecha():
         editd();
