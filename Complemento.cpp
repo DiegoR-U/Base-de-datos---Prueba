@@ -21,10 +21,18 @@ int Complemento::Get_Complemento_size()
 	{	
 		return size;
 	}
-void Complemento::Memoria_justa_cadena(char *&x, int c)
+	
+void Complemento::Memoria_justa_cadena(char *&x, int c, char *llenar)
 	{
-		std::cin>>temporal;
-		
+		if (llenar == nullptr)
+		{
+			std::cin>>temporal;
+		}
+		else
+		{
+			Copiar_Puntero(llenar, temporal, c);
+		}
+
 		for (int i=0; i < c; i++)
 		{
 			if (*(temporal+i) == '\0')
@@ -34,12 +42,12 @@ void Complemento::Memoria_justa_cadena(char *&x, int c)
 		}
 		
 		x = new char[size+1];
-
+		
 		for (int i=0; i < size+1; i++)
 		{
 			*(x+i) = *(temporal+i);
 		}
-		
+
 		delete [] temporal;
 	}
 
@@ -81,14 +89,4 @@ bool Complemento::Contenido_archivo(std::ifstream &x)
 			return 1;
 		}
 	}
-void Complemento::Puntero_Cadena(char *&x, int c, char cad[])
-	{
-		
-		x = new char[c];
-
-		for (int i=0; i < c; i++)
-		{
-			*(x+i) = cad[i];
-		}
-		
-	}
+	

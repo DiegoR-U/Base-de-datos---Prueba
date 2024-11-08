@@ -1,23 +1,26 @@
 #ifndef Ganancias_h
 #define Ganancias_h
 
-#include <fstream>
 #include "Complemento.hpp"
 
-class Ganancias : public Complemento{
+class Ganancias {
 	public:
-
 	explicit Ganancias();
-	void Sumar_utilidad();
-	void Modificar_utilidades();
-	void Mostrar_utilidades();
+	~Ganancias();
+	void Set_dia(Complemento c, char* llenar);
+	char *Get_dia();
+	void Set_ganacia(int i);
+	int Get_ganancia();
+	void Set_perdidas(int i);
+	int Get_perdidas();
+	void Set_utilidad(int i);
+	int Get_utilidad();
+
 	
 	private:
-	std::ifstream READ;
-	std::ofstream WRITE;
-	Complemento comp;
 	int ganancia;
 	int perdidas;
+	int util;
 	char *dia;
 };
 #endif

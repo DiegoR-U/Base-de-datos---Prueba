@@ -1,23 +1,22 @@
 #ifndef Empleados_h
 #define Empleados_h
 
-#include <fstream>
 #include "Complemento.hpp"
 
 class Empleados{
 	public:
-	
 	explicit Empleados();
-	void Listar_empleados();
-	void Anadir_empleados();
-	void Quitar_empleados();
-	void Mostrar_informacion_empleado();
-	void Modificar_informacion_empleado();
+	~Empleados();
+	void Set_nombre(Complemento c, char* llenar);
+	char *Get_nombre();
+	void Set_correo(Complemento c, char* llenar);
+	char *Get_correo();
+	void Set_telefono(int i);
+	int Get_telefono();
+	void Set_dni(int i);
+	int Get_dni();
 
 	private:
-	std::ifstream LECTURA;
-	std::ofstream ESCRITURA;
-	Complemento comp;
 	char *nombre;
 	char *correo;
 	int telefono;
