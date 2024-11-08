@@ -1,17 +1,26 @@
 class Vehiculo{
-public:
-
-	int id;
-	char *modelo;
-	char *matricula;
-	char *estado;
+private:
 	
+	char *marcaAuto;
+	char placa[8];
+	char *color;
+
+public:
+	
+	char *estado;
+	char getMarca() {return *marcaAuto;}
+	char getColor() {return *color;}
+	char getPlaca() {return placa[7];}
 	Vehiculo();
 
-	void agregarIDVehiculo();
-	void agregarModelo();
-	void agregarMatricula();
-	void estadoVehiculo();
-	void mostrarDatos();
-
 };
+class ListaVehiculos{
+public:
+	Vehiculo *misVehiculos;
+	int nro_Vehiculos;
+	
+	void agregarVehiculo();
+	void quitarVehiculo();
+	void modificarEstado();
+	void mostrarRegistro();
+}
