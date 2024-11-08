@@ -154,20 +154,55 @@ void Menu_de_inicio::Menu_Vehiculos()
 		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
 		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
 		std::cout << "					                         ------------------------ 					                        " << std::endl;
-		std::cout << "					                        | 1. Agregar ID vehiculo |					                        " << std::endl;
+		std::cout << "					                        | 1. Agregar Vehiculo    |					                        " << std::endl;
 		std::cout << "					                         ------------------------ 					                        " << std::endl;
-		std::cout << "					                        | 2. Agregar modelo      |					                        " << std::endl;
+		std::cout << "					                        | 2. Quitar Vehiculo     |					                        " << std::endl;
 		std::cout << "					                         ------------------------ 					                        " << std::endl;
-		std::cout << "					                        | 3. Agregar matricula   |					                        " << std::endl;
+		std::cout << "					                        | 3. Modificar Estado    |					                        " << std::endl;			                      				
 		std::cout << "					                         ------------------------ 					                        " << std::endl;
-		std::cout << "					                        | 4. Estado vehiculo     |					                        " << std::endl;
-		std::cout << "					                         ------------------------ 					                        " << std::endl;
-		std::cout << "					                        | 5. Mostrar Datos       |					                        " << std::endl;
+		std::cout << "					                        | 4. Mostrar Datos       |					                        " << std::endl;
 		std::cout << "					                         ------------------------ 					                        " << std::endl;
 		std::cout << "					                        | 5. Salir               |					                        " << std::endl;
 		std::cout << "					                         ------------------------ 					                        " << "\n\n\n";
 		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                        Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 );
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: std::system(CLEAR_COMMAND);
+					std::cout << "\x1B[H";
+					agregarVehiculo();
+					break;
+			case 2: std::system(CLEAR_COMMAND);
+					std::cout << "\x1B[H";
+					quitarVehiculo();
+					break;
+			case 3: std::system(CLEAR_COMMAND);
+					std::cout << "\x1B[H";
+					modificarEstado();
+					break;
+			case 4: std::system(CLEAR_COMMAND);
+					std::cout << "\x1B[H";
+					mostrarRegistro();
+					std::cout << "Programa terminado";
+					break;
+			case 5: std::system(CLEAR_COMMAND);
+					std::cout << "\x1B[H";
+					std::cout << "Programa terminado";
+					break;		
+			default: std::cout << "Esto nunca debio pasar";
+		}
 	}
+	
 	
 void Menu_de_inicio::Menu_Ganancias()
 	{

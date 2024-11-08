@@ -1,17 +1,32 @@
-class Vehiculo{
-public:
+#ifndef Vehiculo_h
+#define Vehiculo_h
 
-	int id;
-	char *modelo;
-	char *matricula;
+#include <fstream>
+#include "Complemento.hpp"
+
+class Vehiculo{
+private:
+	
+	Complemento realizar;
+	char *marcaAuto;
+	char placa[8];
+	char *color;
+	std::ifstream LEER;
+	std::ofstream ESCRIBIR;
+
+public:
+	
 	char *estado;
+	char getMarca() {return *marcaAuto;}
+	char getColor() {return *color;}
+	char getPlaca() {return placa[7];}
 	
 	Vehiculo();
 
-	void agregarIDVehiculo();
-	void agregarModelo();
-	void agregarMatricula();
-	void estadoVehiculo();
-	void mostrarDatos();
-
+	void agregarVehiculo();
+	void quitarVehiculo();
+	void modificarEstado();
+	void mostrarRegistro();
+	
 };
+#endif

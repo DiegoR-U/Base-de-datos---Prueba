@@ -1,83 +1,223 @@
 #include "Vehiculo.hpp"
 #include <iostream>
+
 //Constructor
-Vehiculo::Vehiculo()
-{         
-	id = -1;
-	modelo = nullptr;
-	matricula = nullptr;
+Vehiculo::Vehiculo(){
+	marcaAuto = nullptr;
+	color = nullptr;
 	estado = nullptr;
-}
-//Método para agregar un nuevo auto
-void Vehiculo::agregarIDVehiculo()
-{
-	id++;
-}
-//Método para añadir el modelo del auto
-void Vehiculo::agregarModelo() 
-{
-	char longitudmax[50];
-	int cont{0};
-		
-	std::cout << "Ingrese el modelo del auto: ";
-	std::cin >> longitudmax;
-	std::cout << std::endl;
-	for(int i = 0; i<50; i++)
-	{
-		if(longitudmax[i] != '\0')
-		{
-			cont++;
-		}
-	}
-		
-	modelo = new char[cont + 1];
-	for(int i = 0; i < cont + 1; i++)
-	{
-		*(modelo + i) = longitudmax[i];
-	}
-}
-//Método para ingresar la placa del auto
-void Vehiculo::agregarMatricula()
-{
-	char placa[8];
-	std::cout << "Ingrese la placa o matricula del auto: ";
-	std::cin >> placa;
-	std::cout << std::endl;
-	
-	matricula = new char[8];
 	for(int i = 0; i < 8; i++)
 	{
-		*(matricula + i) = placa[i];
+		placa[i] = ' ';
 	}
 }
-//Método para clasificarlo como disponible o no
-void Vehiculo::estadoVehiculo()	
-{
-	char longitudmax[15];
-	int cont{0};
-		
-	std::cout << "Ingrese la disponibilidad del auto: ";
-	std::cin >> longitudmax;
-	std::cout << std::endl;
-	for(int i = 0; i<15; i++)
+void Vehiculo::agregarVehiculo(){
+
+	ESCRIBIR.open("Autos.txt", std::ios::app);
+
+	if (ESCRIBIR.is_open())
 	{
-		if(longitudmax[i] != '\0')
+		std::cout << "Ingrese la placa del auto que desea agregar: ";
+		std::cin >> placa;
+		std::cout << "\n\n";
+
+		std::cout << "Ingrese la marca: ";
+		realizar.Set_Complemento_temp(20);
+		realizar.Memoria_justa_cadena(marcaAuto, 20);
+		std::cout << "\n\n";
+
+		std::cout << "Ingrese el color de auto: ";
+		realizar.Set_Complemento_temp(10);
+		realizar.Memoria_justa_cadena(color, 10);
+		std::cout << "\n\n";
+		
+		std::cout << "Ingrese el estado (disponible/ocupado): ";
+		realizar.Set_Complemento_temp(20);
+		realizar.Memoria_justa_cadena(estado, 20);
+		std::cout << "\n\n";
+
+		ESCRIBIR << placa << "\n\n";
+		ESCRIBIR << marcaAuto << "\n\n";
+		ESCRIBIR << color << "\n\n";
+		ESCRIBIR << estado << "\n\n";
+	}
+	else
+	{
+		std::cout << "No se pudo abrir el archivo"<<std::endl;
+	}
+
+	ESCRIBIR.close();
+
+}
+void Vehiculo::quitarVehiculo(){
+
+	LEER.open("Autos.txt");
+	ESCRIBIR.open("rAutos.txt", std::ios::app);
+
+	char placa_buscada[8];
+	bool encontrado{false};
+
+	std::cout << "Introduzca la placa del auto que quiere retirar: ";
+	std::cin >> placa_buscada; 
+	std::cout<<std::endl;
+
+	while(!LEER.eof())
+	{
+
+		LEER>>placa;
+		LEER>>marcaAuto;
+		LEER>>color;
+		LEER>>estado;
+
+		if(placa_buscada != placa)
 		{
-			cont++;
+			ESCRIBIR << placa << "\n\n";
+			ESCRIBIR << marcaAuto << "\n\n";
+			ESCRIBIR << color << "\n\n";
+			ESCRIBIR << estado << "\n\n";
+
+		}
+		else
+		{
+			std::cout << "El auto de placa " << placa << " de marca " << marcaAuto << " con color " << color 
+					<< " fue removido exitosamente";
+					encontrado = true;
 		}
 	}
-		
-	estado = new char[cont + 1];
-	for(int i = 0; i < cont + 1; i++)
+
+	if(!encontrado)
 	{
-		*(estado + i) = longitudmax[i];
-	}
+		std::cout << "No se encontro un vehiculo con la placa " << placa_buscada << std::endl;
+	}	
+
+	ESCRIBIR.close();
+	LEER.close();
+		
+	
+	std::remove("Autos.txt");
+	std::rename("rAutos.txt", "Autos.txt");
+	
+	delete[] marcaAuto;
+	delete[] color;
+	delete[] estado;
+
 }
-//Método para imprimir en consola
-void Vehiculo::mostrarDatos()
-{
-	std::cout << "ID: " << id << std::endl;
-	std::cout << "Modelo: " << modelo << std::endl;
-	std::cout << "Matricula: " << matricula << std::endl;
-	std::cout << "Estado: " << estado << std::endl;
+void Vehiculo::modificarEstado(){
+	
+	LEER.open("Autos.txt");
+	ESCRIBIR.open("rAutos.txt", std::ios::app);
+
+	char placa_buscada[8];
+	bool encontrado{false};
+
+	std::cout << "Ingresa la placa del auto que quieres ocupar o desocupar: ";
+	std::cin >> placa_buscada;
+	std::cout << "\n\n";
+
+	while(!LEER.eof())
+	{
+
+		LEER>>placa;
+		LEER>>marcaAuto;
+		LEER>>color;
+		LEER>>estado;
+
+		if(placa_buscada != placa)
+		{
+			ESCRIBIR << placa << "\n\n";
+			ESCRIBIR << marcaAuto << "\n\n";
+			ESCRIBIR << color << "\n\n";
+			ESCRIBIR << estado << "\n\n";
+
+			std::cout << "Usuario no encontrado"<<std::endl;
+
+		}
+		else
+		{
+			char opcion1[11] = "Disponible"; 
+			char opcion2[8] = "Ocupado";
+			int opcion{0};
+			std::cout << "Ingrese el nuevo estado de disponibilidad: "<<std::endl;
+			std::cout << "1) " << opcion1 ;
+			std::cout << "2) " << opcion2 ;
+			std::cin >> opcion;
+
+			switch (opcion)
+			{
+				case 1: 
+					realizar.Puntero_Cadena(estado,11,opcion1);
+					break;
+				case 2:
+					realizar.Puntero_Cadena(estado,8,opcion2);
+					break;
+				default:
+					std::cout << "No valido "<<std::endl;
+					break;
+			}
+
+			ESCRIBIR << placa_buscada << "\n\n";
+			ESCRIBIR << marcaAuto << "\n\n";
+			ESCRIBIR << color << "\n\n";
+			ESCRIBIR << estado << "\n\n";
+
+			encontrado = true;
+
+		}
+
+	}
+
+	ESCRIBIR.close();
+	LEER.close();
+		
+	std::remove("Autos.txt");
+	std::rename("rAutos.txt", "Autos.txt");
+	
+	delete[] marcaAuto;
+	delete[] color;
+	delete[] estado;
+}
+void Vehiculo::mostrarRegistro(){
+
+	LEER.open("Autos.txt");
+
+	char placa_buscada[8];
+	bool encontrado{false};
+	
+	std::cout << "Ingresa la placa del auto que quieres ocupar o desocupar: ";
+	std::cin >> placa_buscada;
+	std::cout << "\n\n";
+
+	while(!LEER.eof())
+	{
+
+		LEER>>placa_buscada;
+		LEER>>marcaAuto;
+		LEER>>color;
+		LEER>>estado;
+
+		if(placa_buscada == placa)
+		{
+			encontrado = true;
+		}
+	}
+	
+	if(encontrado)
+	{
+		
+		std::cout << "Placa: " << placa << "\n\n";
+		std::cout << "Marca: " << marcaAuto << "\n\n";
+		std::cout << "Color: " << color << "\n\n";
+		std::cout << "Estado: " << estado << "\n\n";
+	
+	}
+	else
+	{
+		std::cout << "Usuario no encontrado"<<std::endl;
+	}
+
+	LEER.close();
+	delete[] marcaAuto;
+	delete[] color;
+	delete[] estado;
+
 }

@@ -21,7 +21,6 @@ int Complemento::Get_Complemento_size()
 	{	
 		return size;
 	}
-	
 void Complemento::Memoria_justa_cadena(char *&x, int c)
 	{
 		std::cin>>temporal;
@@ -82,4 +81,14 @@ bool Complemento::Contenido_archivo(std::ifstream &x)
 			return 1;
 		}
 	}
-	
+void Complemento::Puntero_Cadena(char *&x, int c, char cad[])
+	{
+		
+		x = new char[c];
+
+		for (int i=0; i < c; i++)
+		{
+			*(x+i) = cad[i];
+		}
+		
+	}

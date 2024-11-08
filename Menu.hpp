@@ -4,8 +4,9 @@
 #include <iostream>
 #include "Empleado.hpp"
 #include "Ganancias.hpp"
+#include "Vehiculo.hpp"
 
-class Menu_de_inicio : public Empleados, public Ganancias {
+class Menu_de_inicio : public Empleados, public Ganancias, public Vehiculo {
 	public:
 	
 	explicit Menu_de_inicio();
