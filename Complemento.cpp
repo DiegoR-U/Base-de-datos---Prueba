@@ -89,4 +89,15 @@ bool Complemento::Contenido_archivo(std::ifstream &x)
 			return 1;
 		}
 	}
+void Complemento::Puntero_Cadena(char *&x, int c, char cad[])
+	{
+		
+		x = new char[c];
+
+		for (int i=0; i < c; i++)
+		{
+			*(x+i) = cad[i];
+		}
+		
+	}
 	
