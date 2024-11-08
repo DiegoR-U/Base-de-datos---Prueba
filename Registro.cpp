@@ -20,6 +20,11 @@ registro::registro(char _nombre[100], int _d, int _m, int _y, int _inversion){
   y = _y;
   inversion = _inversion;
 }
+registro::borrarregistro(){
+  if(nombre != nullptr){
+    delete []nombre;
+  }
+}
 registro::editnombre(char _nombre[100]){
   if(nombre != nullptr){
     delete []nombre;
