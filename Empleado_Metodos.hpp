@@ -7,6 +7,7 @@
 class Empleados_Metodos{
 	public:
 	explicit Empleados_Metodos();
+	~Empleados_Metodos();
 	void Listar_empleados(int N);
 	void Anadir_empleados(Empleados p, int N);
 	void Quitar_empleados(int N);

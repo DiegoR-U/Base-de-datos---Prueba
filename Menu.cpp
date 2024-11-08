@@ -15,7 +15,7 @@ Menu_de_inicio::Menu_de_inicio()
 		Elegir_funcion = 0;
 		Persona5;
 		ListaP;
-		Dia_4;
+		Dia4_G;
 		ListaG;
 		Vehiculo1;
 		/* prueba = "prueba";
@@ -249,7 +249,7 @@ void Menu_de_inicio::Menu_Ganancias()
 		{
 			case 1: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaG.Sumar_utilidad(3);
+					ListaG.Sumar_utilidad(Dia4_G, 3);
 					break;
 			case 2: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";

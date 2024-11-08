@@ -9,7 +9,7 @@ class Ganancias {
 	~Ganancias();
 	void Set_dia(Complemento c, char* llenar);
 	char *Get_dia();
-	void Set_ganacia(int i);
+	void Set_ganancia(int i);
 	int Get_ganancia();
 	void Set_perdidas(int i);
 	int Get_perdidas();

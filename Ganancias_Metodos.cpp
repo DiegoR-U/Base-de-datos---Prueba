@@ -1,7 +1,7 @@
 #include <iostream>
-#include "Ganancias.hpp"
+#include "Ganancias_Metodos.hpp"
 
-Ganancias::Ganancias()
+Ganancias_Metodos::Ganancias_Metodos()
 	{         
 		complm;
 		Dia1_G;
@@ -10,12 +10,12 @@ Ganancias::Ganancias()
 		Lista_Ganancias = new Ganancias[3];
 	}
 
-void Ganancias::Sumar_utilidad(Ganancias d, int M)
+void Ganancias_Metodos::Sumar_utilidad(Ganancias d, int M)
 	{
 		int ganancia_t, perdidas_t, utilidad_t;
 
 		std::cout << "Que dia es?" << "\n\n";
-		d.Set_dia(comp, nullptr);
+		d.Set_dia(complm, nullptr);
 		std::cout << "\n\n";
 		
 		std::cout << "Cuantas ganancias hay?" << "\n\n";
@@ -51,37 +51,9 @@ void Ganancias::Sumar_utilidad(Ganancias d, int M)
 		delete [] Lista_temp;
 		
 		Guardar(M+1);
-		
-		
-		READ.open("Utilidades.txt");
-		WRITE.open("Utilidades.txt", std::ios::app);
-		
-		std::cout << "Que dia es?" << "\n\n";
-		comp.Set_Complemento_temp(15);
-		comp.Memoria_justa_cadena(dia, 15, nullptr);
-		comp.Set_Complemento_size(0);
-		std::cout << "\n\n";
-
-		std::cout << "Que ganancias obtuviste?" << "\n\n";
-		std::cin >> ganancia;
-		std::cout << "\n\n";
-			
-		std::cout << "Que perdidas obtuviste?" << "\n\n";
-		std::cin >> perdidas;
-		std::cout << "\n\n";
-			
-		int util = ganancia-perdidas;
-		
-		WRITE << "Dia:" << "\n" << dia << "\n";
-		WRITE << "Utilidad:" << "\n" << util << "\n\n";
-		
-		delete [] dia;
-		
-		READ.close();
-		WRITE.close();
 	}
 
-void Ganancias::Modificar_utilidades(int M)
+void Ganancias_Metodos::Modificar_utilidades(int M)
 	{
 		char* dia_t = nullptr;
 		char* dia_t2 = nullptr;
@@ -121,7 +93,7 @@ void Ganancias::Modificar_utilidades(int M)
 		delete [] dia_t2;
 	}
 
-void Ganancias::Mostrar_utilidades(int M)
+void Ganancias_Metodos::Mostrar_utilidades(int M)
 	{
 		for (int i=0; i<M; i++)
 		{
@@ -134,34 +106,9 @@ void Ganancias::Mostrar_utilidades(int M)
 			std::cout << "Utilidad :";
 			std::cout << Lista_Ganancias[i].Get_utilidad() << std::endl;
 		}
-		
-		
-		
-		READ.open("Utilidades.txt");
-		
-		char *Dia_t = new char[5];
-		char *Utilidad_t = new char[10];
-		dia = new char[11];
-				
-		while (!READ.eof())
-		{
-			READ >> Dia_t;
-			READ >> dia;
-			READ >> Utilidad_t;
-			READ >> ganancia;
-			
-			std::cout << "Dia: " << dia << "\n"; 
-			std::cout << "Utilidad: " << ganancia << "\n\n";
-		}
-		
-		delete [] dia;
-		delete [] Dia_t;
-		delete [] Utilidad_t;
-		
-		READ.close();
 	}
 	
-void Ganancias::Llenar(int M)
+void Ganancias_Metodos::Llenar(int M)
 	{
 		Lista_Ganancias[0] = Dia1_G;
 		Lista_Ganancias[1] = Dia2_G;
@@ -181,7 +128,7 @@ void Ganancias::Llenar(int M)
 			READ >> perdidas_t;
 			READ >> util_t;
 			
-			Lista_Ganancias[i].Set_dia(comp, dia_t);	
+			Lista_Ganancias[i].Set_dia(complm, dia_t);	
 			Lista_Ganancias[i].Set_ganancia(ganancia_t);
 			Lista_Ganancias[i].Set_perdidas(perdidas_t);
 			Lista_Ganancias[i].Set_utilidad(util_t);
@@ -192,7 +139,7 @@ void Ganancias::Llenar(int M)
 		READ.close();
 	}
 	
-void Ganancias::Guardar(int M)
+void Ganancias_Metodos::Guardar(int M)
 	{
 		READ.open("Ganancias.txt");
 		WRITE.open("Ganancias_temp.txt", std::ios::app);
