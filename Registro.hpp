@@ -11,10 +11,15 @@ private:
 public:
   registro();
   borrarregistro();
-    edit();
-      editnombre();
-      editfecha():
-        editd();
-        editm();
-        edity();
+      getnombre();
+      setnombre();
+      getd();
+      setd();
+      getm();
+      setm();
+      gety();
+      sety();
+      setfecha();
+      getingreso();
+      setingreso();
 }
