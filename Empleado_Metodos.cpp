@@ -13,12 +13,7 @@
 Empleados_Metodos::Empleados_Metodos()
 	{
 		comp;
-		Persona1;
-		Persona2;
-		Persona3;
-		Persona4;
 		Lista_Empleados = new Empleados[4];
-
 	}
 	
 Empleados_Metodos::~Empleados_Metodos()
@@ -72,7 +67,7 @@ void Empleados_Metodos::Anadir_empleados(Empleados p, int N)
 		{
 			Lista_temp[i] = Lista_Empleados[i];
 		}
-		
+
 		delete [] Lista_Empleados;
 		Lista_temp[N] = p;
 		Lista_Empleados = new Empleados[N+1];
@@ -80,6 +75,14 @@ void Empleados_Metodos::Anadir_empleados(Empleados p, int N)
 		for (int i=0; i<N+1; i++)
 		{
 			Lista_Empleados[i] = Lista_temp[i];
+		}
+		
+		for (int i=0; i<N+1; i++)
+		{
+			std::cout << Lista_Empleados[i].Get_nombre() << std::endl;
+			std::cout << Lista_Empleados[i].Get_correo() << std::endl;
+			std::cout << Lista_Empleados[i].Get_telefono() << std::endl;
+			std::cout << Lista_Empleados[i].Get_dni() << "\n\n";
 		}
 		
 		delete [] Lista_temp;
@@ -166,34 +169,22 @@ void Empleados_Metodos::Modificar_informacion_empleado(int N)
 		{
 			if (Lista_Empleados[i].Get_dni() == DNI_verificar)
 			{
-				std::cout << "Quieres cambiar el nombre?" << std::endl;
+				std::cout << "Quieres cambiar el nombre? | Presiona 1 para si y 0 para no" << std::endl;
 				std::cin >> Confirmar;
-				Lista_Empleados[i].Get_nombre();
 				if (Confirmar == 1)
 					Lista_Empleados[i].Set_nombre(comp, nullptr);
-				Lista_Empleados[i].Get_nombre();
-				std::cout << "Quieres cambiar el correo?" << std::endl;
+				
+				std::cout << "Quieres cambiar el correo? | Presiona 1 para si y 0 para no" << std::endl;
 				std::cin >> Confirmar;
-				Lista_Empleados[i].Get_correo();
 				if (Confirmar == 1)
 					Lista_Empleados[i].Set_correo(comp, nullptr);
-				Lista_Empleados[i].Get_correo();
-				std::cout << "Quieres cambiar el telefono?" << std::endl;
+				
+				std::cout << "Quieres cambiar el telefono? | Presiona 1 para si y 0 para no" << std::endl;
 				std::cin >> Confirmar;
 				std::cout << "Que numero quieres?" << std::endl;
 				std::cin >> Cambio;
-				Lista_Empleados[i].Get_telefono();
 				if (Confirmar == 1)
 					Lista_Empleados[i].Set_telefono(Cambio);
-				Lista_Empleados[i].Get_telefono();
-				std::cout << "Quieres cambiar el DNI?" << std::endl;
-				std::cin >> Confirmar;
-				std::cout << "Que numero quieres?" << std::endl;
-				std::cin >> Cambio;
-				Lista_Empleados[i].Get_dni();
-				if (Confirmar == 1)
-					Lista_Empleados[i].Set_dni(Cambio);
-				Lista_Empleados[i].Get_dni();
 			}
 		}
 		
@@ -202,11 +193,6 @@ void Empleados_Metodos::Modificar_informacion_empleado(int N)
 	
 void Empleados_Metodos::Llenar(int N)
 	{
-		Lista_Empleados[0] = Persona1;
-		Lista_Empleados[1] = Persona2;
-		Lista_Empleados[2] = Persona3;
-		Lista_Empleados[3] = Persona4;
-
 		LECTURA.open("Empleados.txt");
 		
 		int telefono_t = 0;
@@ -226,18 +212,10 @@ void Empleados_Metodos::Llenar(int N)
 			Lista_Empleados[i].Set_telefono(telefono_t);
 			Lista_Empleados[i].Set_dni(dni_t);
 		}
-		
-		for (int i=0; i<N; i++)
-		{
-			std::cout << Lista_Empleados[i].Get_nombre() << std::endl;
-			std::cout << Lista_Empleados[i].Get_correo() << std::endl;
-			std::cout << Lista_Empleados[i].Get_telefono() << std::endl;
-			std::cout << Lista_Empleados[i].Get_dni() << "\n\n";
-		}
 
 		delete [] nombre_t;
 		delete [] correo_t;
-		
+
 		LECTURA.close();
 	}
 	

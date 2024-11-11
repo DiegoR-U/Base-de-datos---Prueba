@@ -15,6 +15,7 @@ class Empleados{
 	int Get_telefono();
 	void Set_dni(int i);
 	int Get_dni();
+	Empleados& operator=(Empleados& E);
 
 	private:
 	char *nombre;
