@@ -101,3 +101,45 @@ void Complemento::Puntero_Cadena(char *&x, int c, char cad[])
 		
 	}
 	
+void Complemento::Borrar_Puntero(char *&x)
+	{
+		if (x != nullptr)
+		{
+			delete [] x;
+		}
+	}
+
+void Complemento::Borrar_Puntero(Vehiculo *&x)
+	{
+		if (x != nullptr)
+		{
+			delete [] x;
+		}
+	}
+
+void Complemento::Borrar_Asignar_ptr(char *&x)
+	{
+		if (x != nullptr)
+		{
+			delete [] x;
+			x = nullptr;
+		}
+
+	}
+
+int Complemento::Longitud_Puntero(char *&x)
+	{
+		
+		int longitud = 0;
+
+		if(x != nullptr)
+		{
+			while ( x[longitud] != '\0' )
+			{
+				longitud ++;
+			}
+		}
+
+		return longitud;
+
+	}
