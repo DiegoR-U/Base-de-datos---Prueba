@@ -11,6 +11,8 @@ class Ganancias_Metodos {
 	void Sumar_utilidad(Ganancias d, int M);
 	void Modificar_utilidades(int M);
 	void Mostrar_utilidades(int M);
+	void Llenar(int M);
+	void Guardar(int M);
 	
 	private:
 	std::ifstream READ;

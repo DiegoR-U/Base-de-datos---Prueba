@@ -4,7 +4,7 @@
 Ganancias::Ganancias()
 	{
 		dia = nullptr;
-		ganancias = -1;
+		ganancia = -1;
 		perdidas = 1;
 	}
 
@@ -16,7 +16,7 @@ Ganancias::~Ganancias()
 		}
 	}
 
-void Empleados::Set_dia(Complemento c, char* llenar)
+void Ganancias::Set_dia(Complemento c, char* llenar)
 	{
 		if (dia != nullptr)
 		{
@@ -35,39 +35,39 @@ void Empleados::Set_dia(Complemento c, char* llenar)
 		c.Set_Complemento_size(0);
 	}
 
-char* Empleados::Get_dia()
+char* Ganancias::Get_dia()
 	{
 		return dia;
 	}
 
-void Empleados::Set_ganancia(int i)
+void Ganancias::Set_ganancia(int i)
 	{
 		ganancia = i;
 	}
 
-int Empleados::Get_ganancia()
+int Ganancias::Get_ganancia()
 	{
 		return ganancia;
 	}
 
-void Empleados::Set_perdidas(int i)
+void Ganancias::Set_perdidas(int i)
 	{
 		perdidas = i;
 	}
 
-int Empleados::Get_perdidas()
+int Ganancias::Get_perdidas()
 	{
 		return perdidas;
 	}
 
-void Empleados::Set_utilidad(int i)
+void Ganancias::Set_utilidad(int i)
 	{
-		utilidad = i;
+		util = i;
 	}
 
-int Empleados::Get_utilidad()
+int Ganancias::Get_utilidad()
 	{
-		return utilidad;
+		return util;
 	}
 
 

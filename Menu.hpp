@@ -2,7 +2,7 @@
 #define Menu_de_inicio_h
 
 #include <iostream>
-#include "Ganancias.hpp"
+#include "Ganancias_Metodos.hpp"
 #include "Vehiculo.hpp"
 #include "Empleado_Metodos.hpp"
 

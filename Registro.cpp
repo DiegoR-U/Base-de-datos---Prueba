@@ -11,6 +11,7 @@ registro::registro(char _nombre[100], int _d, int _m, int _y, int _inversion){
     }
   }
   count--;
+  nombrelen = count;
   nombre = new char[count];
   for(int i = 0; i<count; i++){
     nombre[i] = _nombre[i];
@@ -20,12 +21,20 @@ registro::registro(char _nombre[100], int _d, int _m, int _y, int _inversion){
   y = _y;
   inversion = _inversion;
 }
-registro::borrarregistro(){
+void registro::borrarregistro(){
   if(nombre != nullptr){
     delete []nombre;
   }
+  return;
 }
-registro::editnombre(char _nombre[100]){
+char registro::getnombre(){
+  char x[nombrelen +1];
+  for(int i = 0; i < nombrelen; i++){
+    nombre[i] = x[i];
+  }
+  return x;
+}
+registro::setnombre(char _nombre[100]){
   if(nombre != nullptr){
     delete []nombre;
   }
@@ -42,17 +51,36 @@ registro::editnombre(char _nombre[100]){
     nombre[i] = _nombre[i];
   }
 }
-registro::editd(int x){
+int registro::getd(){
+  return d;
+}
+void registro::setd(int x){
   d = x;
+  return;
 }
-registro::editm(int x){
+int registro::getm(){
+  return m;
+}
+void registro::setm(int x){
   m = x;
+  return;
 }
-registro::edity(int x){
+int registro::gety(){
+  return y;
+}
+void registro::sety(int x){
   y = x;
+  return;
 }
-registro::editfecha(int x, int y, int z){
-  editd(x);
-  editm(y);
-  edity(z);
+void registro::setfecha(int x, int y, int z){
+  setd(x);
+  setm(y);
+  sety(z);
+}
+int getingreso(){
+  return ingreso;
+}
+void setingreso(int x){
+  ingreso = x;
+  return;
 }

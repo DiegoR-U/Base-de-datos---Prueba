@@ -21,9 +21,17 @@ Empleados_Metodos::Empleados_Metodos()
 
 	}
 	
+Empleados_Metodos::~Empleados_Metodos()
+	{
+		if (Lista_Empleados != nullptr)
+		{
+			delete [] Lista_Empleados;
+		}
+	}
+
 void Empleados_Metodos::Listar_empleados(int N)
 	{
-		for (int i=0; i<M; i++)
+		for (int i=0; i<N; i++)
 		{
 			std::cout << "Nombre :";
 			std::cout << Lista_Empleados[i].Get_nombre() << std::endl;
