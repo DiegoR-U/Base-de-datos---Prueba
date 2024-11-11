@@ -1,32 +1,33 @@
 #ifndef Vehiculo_h
 #define Vehiculo_h
 
-#include <fstream>
 #include "Complemento.hpp"
 
 class Vehiculo{
 private:
 	
-	Complemento realizar;
 	char *marcaAuto;
-	char placa[8];
+	char *placa;
 	char *color;
-	std::ifstream LEER;
-	std::ofstream ESCRIBIR;
+	char *estado;
 
 public:
 	
-	char *estado;
-	char getMarca() {return *marcaAuto;}
-	char getColor() {return *color;}
-	char getPlaca() {return placa[7];}
+	Complemento comprobar;
 	
 	Vehiculo();
+	Vehiculo(Vehiculo &o);
+	~Vehiculo();
+	
+	void setMarca(Complemento c, char* llenarMarca);
+	void setPlaca(Complemento c, char* llenarPlaca);
+	void setColor(Complemento c, char* llenarColor);
+	void setEstado(Complemento c, char* llenarEstado);
 
-	void agregarVehiculo();
-	void quitarVehiculo();
-	void modificarEstado();
-	void mostrarRegistro();
+	char* getMarca();
+	char* getPlaca();
+	char* getColor();
+	char* getEstado();
 	
 };
 #endif

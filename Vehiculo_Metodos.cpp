@@ -16,7 +16,7 @@ Vehiculo_Metodos::Vehiculo_Metodos(Vehiculo_Metodos &o)
 
 		for (int i = 0; i < nroVehiculos; ++i)
 		{
-			*(listaVehiculos + i) = *(o.listaVehiculos + i) 
+			*(listaVehiculos + i) = *(o.listaVehiculos + i);
 		}
 	}
 
@@ -27,7 +27,7 @@ Vehiculo_Metodos::~Vehiculo_Metodos()
 
 	}
 
-void VVehiculo_Metodos::agregarVehiculo(Vehiculo newVehiculo)
+void Vehiculo_Metodos::agregarVehiculo(Vehiculo newVehiculo)
 	{
 
 		std::cout << "Ingrese la placa: " << "\n\n";
