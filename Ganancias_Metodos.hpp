@@ -8,19 +8,18 @@ class Ganancias_Metodos {
 	public:
 
 	explicit Ganancias_Metodos();
-	void Sumar_utilidad(Ganancias d, int M);
-	void Modificar_utilidades(int M);
-	void Mostrar_utilidades(int M);
-	void Llenar(int M);
-	void Guardar(int M);
+	void Sumar_utilidad();
+	void Modificar_utilidades();
+	void Mostrar_utilidades();
+	void Determinar_tamano();
+	void Llenar();
+	void Guardar();
 	
 	private:
 	std::ifstream READ;
 	std::ofstream WRITE;
 	Complemento complm;
-	Ganancias Dia1_G;
-	Ganancias Dia2_G;
-	Ganancias Dia3_G;
+	int size;
 	Ganancias* Lista_Ganancias;
 };
 #endif

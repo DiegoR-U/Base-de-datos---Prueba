@@ -5,7 +5,8 @@ Ganancias::Ganancias()
 	{
 		dia = nullptr;
 		ganancia = -1;
-		perdidas = 1;
+		perdidas = -1;
+		util = 0;
 	}
 
 Ganancias::~Ganancias()
@@ -68,6 +69,19 @@ void Ganancias::Set_utilidad(int i)
 int Ganancias::Get_utilidad()
 	{
 		return util;
+	}
+
+Ganancias& Ganancias::operator=(Ganancias& G)
+	{
+		Complemento g;
+		g.Set_Complemento_temp(11);
+		g.Memoria_justa_cadena(dia, 11, G.Get_dia());
+		g.Set_Complemento_size(0);
+		ganancia = G.Get_ganancia();
+		perdidas = G.Get_perdidas();
+		util = G.Get_utilidad();
+		
+		return *this;
 	}
 
 

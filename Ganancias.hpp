@@ -15,6 +15,7 @@ class Ganancias {
 	int Get_perdidas();
 	void Set_utilidad(int i);
 	int Get_utilidad();
+	Ganancias& operator=(Ganancias& G);
 
 	
 	private:

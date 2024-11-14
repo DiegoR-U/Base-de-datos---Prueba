@@ -8,22 +8,20 @@ class Empleados_Metodos{
 	public:
 	explicit Empleados_Metodos();
 	~Empleados_Metodos();
-	void Listar_empleados(int N);
-	void Anadir_empleados(Empleados p, int N);
-	void Quitar_empleados(int N);
-	void Mostrar_informacion_empleado(int N);
-	void Modificar_informacion_empleado(int N);
-	void Llenar(int N);
-	void Guardar(int N);
+	void Listar_empleados();
+	void Anadir_empleados();
+	void Quitar_empleados();
+	void Mostrar_informacion_empleado();
+	void Modificar_informacion_empleado();
+	void Determinar_tamano();
+	void Llenar();
+	void Guardar();
 
 	private:
 	std::ifstream LECTURA;
 	std::ofstream ESCRITURA;
 	Complemento comp;
-	Empleados Persona1;
-	Empleados Persona2;
-	Empleados Persona3;
-	Empleados Persona4;
+	int size;
 	Empleados* Lista_Empleados;
 };
 #endif

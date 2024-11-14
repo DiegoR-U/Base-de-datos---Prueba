@@ -100,19 +100,15 @@ int Empleados::Get_dni()
 
 Empleados& Empleados::operator=(Empleados& E)
 	{
-		std::cout << "llega" << std::endl;
 		Complemento p;
 		p.Set_Complemento_temp(15);
 		p.Memoria_justa_cadena(nombre, 15, E.Get_nombre());
-		std::cout << "llega2" << std::endl;
 		p.Set_Complemento_size(0);
 		p.Set_Complemento_temp(50);
 		p.Memoria_justa_cadena(correo, 50, E.Get_correo());
-		std::cout << "llega3" << std::endl;
 		p.Set_Complemento_size(0);
 		telefono = E.Get_telefono();
 		DNI = E.Get_dni();
-		std::cout << "gg" << std::endl;
 		
 		return *this;
 	}
