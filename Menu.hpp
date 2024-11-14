@@ -20,9 +20,7 @@ class Menu_de_inicio {
 	
 	int Elegir_funcion;
 	Empleados_Metodos ListaP;
-	Empleados Persona5;
 	Ganancias_Metodos ListaG;
-	Ganancias Dia4_G;
 	Vehiculo Vehiculo1;
 	/*registro Registro1;
 	char prueba[100];*/

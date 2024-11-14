@@ -13,10 +13,8 @@
 Menu_de_inicio::Menu_de_inicio()
 	{
 		Elegir_funcion = 0;
-		Persona5;
-		ListaP;
-		Dia4_G;
-		ListaG;
+		ListaP.Determinar_tamano();
+		ListaG.Determinar_tamano();
 		Vehiculo1;
 		/* prueba = "prueba";
 		Registro1(prueba, 11, 12, 2024) */
@@ -84,9 +82,7 @@ void Menu_de_inicio::Mostrar_menu()
 	}
 	
 void Menu_de_inicio::Menu_Empleados()
-	{
-		ListaP.Llenar(4);
-		
+	{		
 		//MENU DE EMPLEADOS - PRUEBA
 		std::cout<< "\x1b[38;5;182m";
 		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
@@ -125,30 +121,32 @@ void Menu_de_inicio::Menu_Empleados()
 		{
 			case 1: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaP.Listar_empleados(4);
+					ListaP.Listar_empleados();
 					break;
 			case 2: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaP.Anadir_empleados(Persona5, 4);
+					ListaP.Anadir_empleados();
 					break;
 			case 3: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaP.Quitar_empleados(4);
+					ListaP.Quitar_empleados();
 					break;
 			case 4: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaP.Mostrar_informacion_empleado(4);
+					ListaP.Mostrar_informacion_empleado();
 					break;
 			case 5: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaP.Modificar_informacion_empleado(4);
+					ListaP.Modificar_informacion_empleado();
 					break;
 			case 6: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					std::cout << "Programa terminado";
+					Mostrar_menu();
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
+		
+		Menu_Empleados();
 	}
 
 void Menu_de_inicio::Menu_Vehiculos()
@@ -204,15 +202,17 @@ void Menu_de_inicio::Menu_Vehiculos()
 					break;
 			case 5: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					std::cout << "Programa terminado";
+					Mostrar_menu();
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
+		
+		Menu_Vehiculos();
 	}
 	
 void Menu_de_inicio::Menu_Ganancias()
 	{
-		ListaG.Llenar(3);
+		ListaG.Determinar_tamano();
 		
 		//MENU PRINCIPAL
 		std::cout<< "\x1b[38;5;182m";
@@ -249,22 +249,24 @@ void Menu_de_inicio::Menu_Ganancias()
 		{
 			case 1: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaG.Sumar_utilidad(Dia4_G, 3);
+					ListaG.Sumar_utilidad();
 					break;
 			case 2: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaG.Modificar_utilidades(3);
+					ListaG.Modificar_utilidades();
 					break;
 			case 3: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					ListaG.Mostrar_utilidades(3);
+					ListaG.Mostrar_utilidades();
 					break;
 			case 4: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					std::cout << "Programa terminado";
+					Mostrar_menu();
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
+		
+		Menu_Ganancias();
 	}
 	
 void Menu_de_inicio::Menu_Inscripcion()
@@ -312,9 +314,11 @@ void Menu_de_inicio::Menu_Inscripcion()
 					break;
 			case 4: std::system(CLEAR_COMMAND);
 					std::cout << "\x1B[H";
-					std::cout << "Programa terminado";
+					Mostrar_menu();
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 			
-		} */
+		} 
+		
+		Menu_Inscripcion(); */
 	}
