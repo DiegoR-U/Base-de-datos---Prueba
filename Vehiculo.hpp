@@ -18,7 +18,7 @@ public:
 	Vehiculo();
 	Vehiculo(Vehiculo &o);
 	~Vehiculo();
-	
+	 
 	void setMarca(Complemento c, char* llenarMarca);
 	void setPlaca(Complemento c, char* llenarPlaca);
 	void setColor(Complemento c, char* llenarColor);

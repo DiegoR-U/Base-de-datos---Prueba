@@ -19,13 +19,16 @@ public:
     Complemento comprobar;
 
     Vehiculo_Metodos();
-    Vehiculo_Metodos(Vehiculo_Metodos &o); //constructor de copia
+    Vehiculo_Metodos(Vehiculo_Metodos &o); 
     ~Vehiculo_Metodos();
     
-    void agregarVehiculo(Vehiculo newVehiculo);
+    void agregarVehiculo();
     void quitarVehiculo();
+    void buscarVehiculo();
     void modificarEstado();
-    void mostrarRegistro();
+    void llenarArchivo();
+    void guardarArchivo();
+    void longitudLista();
 	
 };
 
