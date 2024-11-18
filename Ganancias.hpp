@@ -2,19 +2,19 @@
 #define Ganancias_h
 
 #include "Complemento.hpp"
+#include "Fecha.hpp"
 
 class Ganancias {
 	public:
 	explicit Ganancias();
-	~Ganancias();
-	void Set_dia(Complemento c, char* llenar);
-	char *Get_dia();
 	void Set_ganancia(int i);
-	int Get_ganancia();
+	int Get_ganancia() const;
 	void Set_perdidas(int i);
-	int Get_perdidas();
+	int Get_perdidas() const;
 	void Set_utilidad(int i);
-	int Get_utilidad();
+	int Get_utilidad() const;
+	void Set_DMY(int d=0, int m=0, int y=0);
+	Fecha& Get_DMY();
 	Ganancias& operator=(Ganancias& G);
 
 	
@@ -22,6 +22,6 @@ class Ganancias {
 	int ganancia;
 	int perdidas;
 	int util;
-	char *dia;
+	Fecha DMY;
 };
 #endif

@@ -22,6 +22,9 @@ Menu_de_inicio::Menu_de_inicio()
 	
 void Menu_de_inicio::Mostrar_menu()
 	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
 		//MENU PRINCIPAL
 		std::cout<< "\x1b[38;5;182m";
 		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
@@ -32,7 +35,7 @@ void Menu_de_inicio::Mostrar_menu()
 		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
 		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
 		std::cout << "					                              -------------- 					                            " << std::endl;
-		std::cout << "					                             | 1. Empleados |					                            " << std::endl;
+		std::cout << "					                             | 1. Personas  |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << std::endl;
 		std::cout << "					                             | 2. Vehiculos |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << std::endl;
@@ -57,32 +60,25 @@ void Menu_de_inicio::Mostrar_menu()
 		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Menu_Empleados();
+			case 1: Menu_Personas();
 					break;
-			case 2: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Menu_Vehiculos();
+			case 2: Menu_Vehiculos();
 					break;
-			case 3: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Menu_Ganancias();
+			case 3: Menu_Ganancias();
 					break;
-			case 4: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Menu_Inscripcion();
+			case 4: Menu_Inscripcion();
 					break;
-			case 5: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					std::cout << "Programa terminado" << std::endl;
+			case 5: std::cout << "Programa terminado" << std::endl;
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
 	}
 	
-void Menu_de_inicio::Menu_Empleados()
-	{		
+void Menu_de_inicio::Menu_Personas()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
 		//MENU DE EMPLEADOS - PRUEBA
 		std::cout<< "\x1b[38;5;182m";
 		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
@@ -119,38 +115,28 @@ void Menu_de_inicio::Menu_Empleados()
 		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaP.Listar_empleados();
+			case 1: ListaP.Listar_personas();
 					break;
-			case 2: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaP.Anadir_empleados();
+			case 2: ListaP.Anadir_personas();
 					break;
-			case 3: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaP.Quitar_empleados();
+			case 3: ListaP.Quitar_personas();
 					break;
-			case 4: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaP.Mostrar_informacion_empleado();
+			case 4: ListaP.Mostrar_informacion_personas();
 					break;
-			case 5: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaP.Modificar_informacion_empleado();
+			case 5: ListaP.Modificar_informacion_personas();
 					break;
-			case 6: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Mostrar_menu();
-					break;
+			case 6: break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
 		
-		Menu_Empleados();
+		Menu_Personas();
 	}
 
 void Menu_de_inicio::Menu_Vehiculos()
 	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+					
 		//MENU DE VEHICULOS
 		std::cout<< "\x1b[38;5;182m";
 		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
@@ -171,7 +157,7 @@ void Menu_de_inicio::Menu_Vehiculos()
 		std::cout << "					                         ------------------------ 					                        " << std::endl;
 		std::cout << "					                        | 5. Salir               |					                        " << std::endl;
 		std::cout << "					                         ------------------------ 					                        " << "\n\n\n";
-		
+		/*
 		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
 		do
 		{
@@ -184,35 +170,25 @@ void Menu_de_inicio::Menu_Vehiculos()
 		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Vehiculo1.agregarVehiculo();
+			case 1: Vehiculo1.agregarVehiculo();
 					break;
-			case 2: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Vehiculo1.quitarVehiculo();
+			case 2: Vehiculo1.quitarVehiculo();
 					break;
-			case 3: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Vehiculo1.modificarEstado();
+			case 3: Vehiculo1.modificarEstado();
 					break;
-			case 4: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Vehiculo1.mostrarRegistro();
+			case 4: Vehiculo1.mostrarRegistro();
 					break;
-			case 5: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Mostrar_menu();
-					break;
+			case 5: break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
 		
-		Menu_Vehiculos();
+		Menu_Vehiculos(); */
 	}
 	
 void Menu_de_inicio::Menu_Ganancias()
 	{
-		ListaG.Determinar_tamano();
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
 		
 		//MENU PRINCIPAL
 		std::cout<< "\x1b[38;5;182m";
@@ -247,22 +223,13 @@ void Menu_de_inicio::Menu_Ganancias()
 		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaG.Sumar_utilidad();
+			case 1: ListaG.Sumar_utilidad();
 					break;
-			case 2: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaG.Modificar_utilidades();
+			case 2: ListaG.Modificar_utilidades();
 					break;
-			case 3: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					ListaG.Mostrar_utilidades();
+			case 3: ListaG.Mostrar_utilidades();
 					break;
-			case 4: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Mostrar_menu();
-					break;
+			case 4: break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
 		
@@ -271,6 +238,9 @@ void Menu_de_inicio::Menu_Ganancias()
 	
 void Menu_de_inicio::Menu_Inscripcion()
 	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
 		std::cout<< "\x1b[38;5;182m";
 		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
 		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
@@ -300,22 +270,13 @@ void Menu_de_inicio::Menu_Inscripcion()
 		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Registro1.editnombre()
+			case 1: Registro1.editnombre()
 					break;
-			case 2: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Registro1.editnombre()
+			case 2: Registro1.editnombre()
 					break;
-			case 3: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Registro1.editfecha()
+			case 3: Registro1.editfecha()
 					break;
-			case 4: std::system(CLEAR_COMMAND);
-					std::cout << "\x1B[H";
-					Mostrar_menu();
-					break;
+			case 4: break;
 			default: std::cout << "Esto nunca debio pasar";
 			
 		} 

@@ -1,26 +1,36 @@
-#ifndef Empleados_h
-#define Empleados_h
+#ifndef Empleado_h
+#define Empleado_h
 
 #include "Complemento.hpp"
+#include "Fecha.hpp"
+#include "Persona.hpp"
 
-class Empleados{
+class Empleado : public Persona{
 	public:
-	explicit Empleados();
-	~Empleados();
-	void Set_nombre(Complemento c, char* llenar);
-	char *Get_nombre();
-	void Set_correo(Complemento c, char* llenar);
-	char *Get_correo();
-	void Set_telefono(int i);
-	int Get_telefono();
-	void Set_dni(int i);
-	int Get_dni();
-	Empleados& operator=(Empleados& E);
+	explicit Empleado();
+	~Empleado();
+	void Set_Contrato(int d=0, int m=0, int y=0);
+	void Set_Nacimiento(int d=0, int m=0, int y=0);
+	void Set_email(Complemento c);
+	void Set_email(Complemento c, char*& llenar);
+	void Set_direccion(Complemento c);
+	void Set_direccion(Complemento c, char*& llenar);
+	void Set_salario(float s);
+	void Set_edad(int e);
+	Fecha& Get_Contrato();
+	Fecha& Get_Nacimiento();
+	char *Get_email() const;
+	char *Get_direccion() const;
+	float Get_salario() const;
+	int Get_edad() const;
+	Empleado& operator=(Empleado& E);
 
 	private:
-	char *nombre;
-	char *correo;
-	int telefono;
-	int DNI;
+	Fecha Contrato;
+	Fecha Nacimiento;
+	char *Email;
+	char *Direccion;
+	float Salario;
+	int Edad;
 };
 #endif

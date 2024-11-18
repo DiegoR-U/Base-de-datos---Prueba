@@ -4,14 +4,14 @@
 #include <iostream>
 #include "Ganancias_Metodos.hpp"
 #include "Vehiculo.hpp"
-#include "Empleado_Metodos.hpp"
+#include "Persona_Metodos.hpp"
 
 class Menu_de_inicio {
 	public:
 	
 	explicit Menu_de_inicio();
 	void Mostrar_menu();
-	void Menu_Empleados();
+	void Menu_Personas();
 	void Menu_Vehiculos();
 	void Menu_Ganancias();
 	void Menu_Inscripcion();
@@ -19,7 +19,7 @@ class Menu_de_inicio {
 	private:
 	
 	int Elegir_funcion;
-	Empleados_Metodos ListaP;
+	Persona_Metodos ListaP;
 	Ganancias_Metodos ListaG;
 	Vehiculo Vehiculo1;
 	/*registro Registro1;

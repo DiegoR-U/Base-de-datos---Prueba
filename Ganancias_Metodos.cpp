@@ -21,8 +21,7 @@ void Ganancias_Metodos::Sumar_utilidad()
 		
 		delete [] Lista_Ganancias;
 		
-		std::cout << "Que dia es?" << "\n\n";
-		Lista_temp[size].Set_dia(complm, nullptr);
+		Lista_temp[size].Set_DMY();
 		std::cout << "\n\n";
 		
 		std::cout << "Cuantas ganancias hay?" << "\n\n";
@@ -57,39 +56,36 @@ void Ganancias_Metodos::Modificar_utilidades()
 	{
 		if (Lista_Ganancias[0].Get_ganancia() != -1)
 		{
-			char* dia_t = nullptr;
-			char* dia_t2 = nullptr;
 			int ganancia_t, perdidas_t, utilidad_t;
-			
-			dia_t = new char[11];
-			dia_t2 = new char[11];
 			bool Existe = 0;
+			Fecha DMY_t;
 			
-			std::cout << "Escribe el dia que quieras modificar" << std::endl;
-			std::cin >> dia_t;
+			std::cout << "Escribe la fecha que quieras modificar" << std::endl;
+			std::cin >> DMY_t;
 			
 			for (int i=0; i<size; i++)
 			{
-				dia_t2 = Lista_Ganancias[i].Get_dia();
 				
-				if (complm.Comparar_Punteros(dia_t, dia_t2, 11) && Existe==0)
+				if (Lista_Ganancias[i].Get_DMY() == DMY_t)
 				{
 					Existe = 1;
+					
 					std::cout << "Que cantidad de ganancia quieres sobreponer?" << std::endl;
 					std::cout << "\n\n";
 					std::cin >> ganancia_t;
 					std::cout << "\n\n";
 					Lista_Ganancias[i].Set_ganancia(ganancia_t);
 					
-					std::cout << "Que cantidad de ganancia quieres sobreponer?" << std::endl;
+					std::cout << "Que cantidad de perdidas quieres sobreponer?" << std::endl;
 					std::cout << "\n\n";
 					std::cin >> perdidas_t;
 					std::cout << "\n\n";
 					Lista_Ganancias[i].Set_perdidas(perdidas_t);
 					
 					utilidad_t = ganancia_t - perdidas_t;
-	
 					Lista_Ganancias[i].Set_utilidad(utilidad_t);
+					
+					break;
 				}
 			}
 			
@@ -97,9 +93,6 @@ void Ganancias_Metodos::Modificar_utilidades()
 			{
 				std::cout << "No se encontró el día" << std::endl;
 			}
-			
-			delete [] dia_t;
-			delete [] dia_t2;
 			
 			Guardar();
 		}
@@ -113,24 +106,24 @@ void Ganancias_Metodos::Mostrar_utilidades()
 	{
 		if (Lista_Ganancias[0].Get_ganancia() != -1)
 		{
-			char* Fecha_min = new char[11];
-			char* Fecha_max = new char[11];
+			Fecha DMY_min;
+			Fecha DMY_max;
 			
 			std::cout << "Desde que fecha quieres mostrar las utilidades? | (Pon 00/00/0000 para empezar desde el inicio)" << "\n\n";
-			std::cin >> Fecha_min;
+			std::cin >> DMY_min;
 			
 			do
 			{
-			std::cout << "Hasta que fecha quieres mostrar las utilidades? | (Pon 00/00/3000 para llegar hasta el final)" << "\n\n";
-			std::cin >> Fecha_max;
-			} while (complm.Fechas_mayor(Fecha_min, Fecha_max));
+				std::cout << "Hasta que fecha quieres mostrar las utilidades? | (Pon 00/00/3000 para llegar hasta el final)" << "\n\n";
+				std::cin >> DMY_max;
+			} while (DMY_min > DMY_max);
 			
 			for (int i=0; i<size; i++)
 			{
-				if (complm.Fechas_mayor(Lista_Ganancias[i].Get_dia(), Fecha_min) && complm.Fechas_mayor(Fecha_max, Lista_Ganancias[i].Get_dia()))
+				if (Lista_Ganancias[i].Get_DMY() >= DMY_min && DMY_max >= Lista_Ganancias[i].Get_DMY())
 				{
-					std::cout << "Dia :";
-					std::cout << Lista_Ganancias[i].Get_dia() << std::endl;
+					std::cout << "Fecha :";
+					std::cout << Lista_Ganancias[i].Get_DMY() << std::endl;
 					std::cout << "Ganancias :";
 					std::cout << Lista_Ganancias[i].Get_ganancia() << std::endl;
 					std::cout << "Perdidas :";
@@ -172,27 +165,38 @@ void Ganancias_Metodos::Llenar()
 	{
 		READ.open("Ganancias.txt");
 		
-		int ganancia_t = 0;
-		int perdidas_t = 0;
-		int util_t = 0;
-		char *dia_t = new char[11];
+		int dia_t, mes_t, year_t, ganancia_t, perdidas_t, util_t;
+		char *nombre_t = new char[15];
+		char *espacio_t = new char[5];
+		
+		READ >> nombre_t >> espacio_t >> nombre_t >> espacio_t >> nombre_t >> espacio_t >> nombre_t;
 		
 		READ >> size;
 		
 		for (int i=0; i<size; i++)
 		{
 			READ >> dia_t;
+			READ >> espacio_t;
+			
+			READ >> mes_t;
+			READ >> espacio_t;
+			
+			READ >> year_t;
+			READ >> espacio_t;
+			
 			READ >> ganancia_t;
+			READ >> espacio_t;
+			
 			READ >> perdidas_t;
+			READ >> espacio_t;
+			
 			READ >> util_t;
 			
-			Lista_Ganancias[i].Set_dia(complm, dia_t);	
+			Lista_Ganancias[i].Set_DMY(dia_t, mes_t, year_t);	
 			Lista_Ganancias[i].Set_ganancia(ganancia_t);
 			Lista_Ganancias[i].Set_perdidas(perdidas_t);
 			Lista_Ganancias[i].Set_utilidad(util_t);
 		}
-		
-		delete [] dia_t;
 		
 		READ.close();
 	}
@@ -202,13 +206,15 @@ void Ganancias_Metodos::Guardar()
 		READ.open("Ganancias.txt");
 		WRITE.open("Ganancias_temp.txt", std::ios::app);
 		
+		WRITE << "Fecha  ->  Ganancia ->  Perdidas ->  Utilidad" << "\n\n";
+		
 		WRITE << size << "\n\n";
 
 		for (int i=0; i<size; i++)
 		{
-			WRITE << Lista_Ganancias[i].Get_dia() << std::endl;
-			WRITE << Lista_Ganancias[i].Get_ganancia() << std::endl;
-			WRITE << Lista_Ganancias[i].Get_perdidas() << std::endl;
+			WRITE << Lista_Ganancias[i].Get_DMY() << " | ";
+			WRITE << Lista_Ganancias[i].Get_ganancia() << " | ";
+			WRITE << Lista_Ganancias[i].Get_perdidas() << " | ";
 			WRITE << Lista_Ganancias[i].Get_utilidad() << "\n\n";
 		}
 
