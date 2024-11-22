@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <fstream>
 class registro{
@@ -22,4 +23,4 @@ public:
       setfecha();
       getingreso();
       setingreso();
-}
+} */
