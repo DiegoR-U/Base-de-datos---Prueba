@@ -24,7 +24,11 @@ Vehiculo_Metodos::Vehiculo_Metodos(Vehiculo_Metodos &o)
 Vehiculo_Metodos::~Vehiculo_Metodos()
 	{
 
-		comprobar.Borrar_Puntero(listaVehiculos);	
+		if (listaVehiculos != nullptr)
+		{
+			delete [] listaVehiculos;
+		}	
+	
 
 	}
 
