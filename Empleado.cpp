@@ -10,105 +10,166 @@
     #define CLEAR_COMMAND "clear"
 #endif
 	
-Empleados::Empleados()
+Empleado::Empleado() : Persona()
 	{
-		nombre = nullptr;
-		correo = nullptr;
-		telefono = -1;
-		DNI = -1;
+		Email = nullptr;
+		Direccion = nullptr;
+		Salario = -1;
+		Edad = -1;
 	}
 
-Empleados::~Empleados()
+Empleado::~Empleado()
 	{
-		if (nombre != nullptr)
+		if (Email != nullptr)
 		{
-			delete [] nombre;
+			delete [] Email;
 		}
-		if (correo != nullptr)
+		if (Direccion != nullptr)
 		{
-			delete [] correo;
+			delete [] Direccion;
 		}
 	}
-
-void Empleados::Set_nombre(Complemento c, char* llenar)
+	
+void Empleado::Set_Contrato(int d, int m, int y)
 	{
-		if (nombre != nullptr)
+		if (d != 0 && m != 0 && y != 0)
 		{
-			delete [] nombre;
-			nombre = nullptr;
-		}
-		c.Set_Complemento_temp(15);
-		if (llenar == nullptr)
-		{
-			c.Memoria_justa_cadena(nombre, 15, nullptr);
+			Contrato.Set_dia(d);
+			Contrato.Set_mes(m);
+			Contrato.Set_year(y);
 		}
 		else
 		{
-			c.Memoria_justa_cadena(nombre, 15, llenar);
+			std::cin >> Contrato;
 		}
+	}
+	
+void Empleado::Set_Nacimiento(int d, int m, int y)
+	{
+		if (d != 0 && m != 0 && y != 0)
+		{
+			Nacimiento.Set_dia(d);
+			Nacimiento.Set_mes(m);
+			Nacimiento.Set_year(y);
+		}
+		else
+		{
+			std::cin >> Nacimiento;
+		}
+	}
+
+void Empleado::Set_email(Complemento c)
+	{
+		c.Borrar_Asignar_ptr(Email);
+		
+		c.Set_Complemento_temp(60);
+			
+		c.Memoria_justa_cadena(Email, 60, nullptr);
+
 		c.Set_Complemento_size(0);
 	}
 
-char* Empleados::Get_nombre()
+void Empleado::Set_email(Complemento c, char*& llenar)
 	{
-		return nombre;
+		c.Borrar_Asignar_ptr(Email);
+		
+		c.Set_Complemento_temp(60);
+		
+		c.Memoria_justa_cadena(Email, 60, llenar);
+
+		c.Set_Complemento_size(0);
 	}
 
-void Empleados::Set_correo(Complemento c, char* llenar)
+void Empleado::Set_direccion(Complemento c)
 	{
-		if (correo != nullptr)
-		{
-			delete [] correo;
-			correo = nullptr;
-		}
-		c.Set_Complemento_temp(50);
-		if (llenar == nullptr)
-		{
-			c.Memoria_justa_cadena(correo, 50, nullptr);
-		}
-		else
-		{
-			c.Memoria_justa_cadena(correo, 50, llenar);
-		}
+		c.Borrar_Asignar_ptr(Direccion);
+		
+		c.Set_Complemento_temp(60);
+			
+		c.Memoria_justa_cadena(Direccion, 60, nullptr);
+
+		c.Set_Complemento_size(0);
+	}
+
+void Empleado::Set_direccion(Complemento c, char*& llenar)
+	{
+		c.Borrar_Asignar_ptr(Direccion);
+		
+		c.Set_Complemento_temp(60);
+		
+		c.Memoria_justa_cadena(Direccion, 60, llenar);
+
 		c.Set_Complemento_size(0);
 	}
 	
-char* Empleados::Get_correo()
+void Empleado::Set_salario(float s)
 	{
-		return correo;
+		std::cout << "Si llega";
+		Salario = s;
 	}
 
-void Empleados::Set_telefono(int i)
+void Empleado::Set_edad(int e)
 	{
-		telefono = i;
+		Edad = e;
+	}
+	
+char* Empleado::Get_email() const
+	{
+		return Email;
 	}
 
-int Empleados::Get_telefono()
+char* Empleado::Get_direccion() const
 	{
-		return telefono;
+		return Direccion;
 	}
 
-void Empleados::Set_dni(int i)
+float Empleado::Get_salario() const
 	{
-		DNI = i;
+		return Salario;
 	}
 
-int Empleados::Get_dni()
+int Empleado::Get_edad() const
 	{
-		return DNI;
+		return Edad;
+	}
+	
+Fecha& Empleado::Get_Contrato()
+	{
+		return Contrato;
+	}
+	
+Fecha& Empleado::Get_Nacimiento()
+	{
+		return Nacimiento;
 	}
 
-Empleados& Empleados::operator=(Empleados& E)
+Empleado& Empleado::operator=(Empleado& E)
 	{
 		Complemento p;
-		p.Set_Complemento_temp(15);
-		p.Memoria_justa_cadena(nombre, 15, E.Get_nombre());
+		
+		p.Set_Complemento_temp(60);
+		p.Memoria_justa_cadena(nombre, 60, E.Get_nombre());
 		p.Set_Complemento_size(0);
-		p.Set_Complemento_temp(50);
-		p.Memoria_justa_cadena(correo, 50, E.Get_correo());
+		
+		this->telefono = E.Get_telefono();
+		
+		this->DNI = E.Get_dni();
+		
+		p.Set_Complemento_temp(60);
+		p.Memoria_justa_cadena(Email, 60, E.Get_email());
 		p.Set_Complemento_size(0);
-		telefono = E.Get_telefono();
-		DNI = E.Get_dni();
+		
+		p.Set_Complemento_temp(60);
+		p.Memoria_justa_cadena(Direccion, 60, E.Get_direccion());
+		p.Set_Complemento_size(0);
+		
+		this->Salario = E.Get_salario();
+		
+		this->Contrato = E.Get_Contrato();
+		
+		this->Nacimiento = E.Get_Nacimiento();
+		
+		this->Edad = E.Get_edad();
 		
 		return *this;
 	}

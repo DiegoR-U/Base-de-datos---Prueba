@@ -10,7 +10,7 @@
     #define CLEAR_COMMAND "clear"
 #endif
 	
-Cliente::Cliente()
+Cliente::Cliente() : Persona()
 	{
 		puntos = -1;
 	}

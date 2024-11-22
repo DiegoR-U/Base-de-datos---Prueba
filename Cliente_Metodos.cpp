@@ -176,7 +176,7 @@ void Cliente_Metodos::Quitar_clientes()
 				{
 					delete [] Lista_Clientes;
 				
-					Lista_Clientes = new Persona[1];
+					Lista_Clientes = new Cliente[1];
 					
 					size--;
 				}
@@ -260,7 +260,7 @@ void Cliente_Metodos::Modificar_informacion_clientes()
 					std::cout << "Quieres cambiar la fecha de inscripcion? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Clientes[i].Set_inscrpcion();
+						Lista_Clientes[i].Set_inscripcion();
 					
 					std::cout << "Quieres cambiar los puntos? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
@@ -281,7 +281,7 @@ void Cliente_Metodos::Modificar_informacion_clientes()
 		}
 	}
 	
-void Persona_Metodos::Determinar_tamano()
+void Cliente_Metodos::Determinar_tamano()
 	{
 		ESCRITURA.open("Clientes.txt", std::ios::app);
 		LECTURA.open("Clientes.txt");
@@ -307,8 +307,8 @@ void Cliente_Metodos::Llenar()
 	{
 		LECTURA.open("Clientes.txt");
 		
-		int telefono_t = 0;
-		int dni_t = 0;
+		int num_t;
+		int dia_t, mes_t, year_t;
 		char *nombre_t = new char[60];
 		char *espacio_t = new char[5];
 		
@@ -322,14 +322,30 @@ void Cliente_Metodos::Llenar()
 					
 			Lista_Clientes[i].Set_nombre(comp, nombre_t);
 			
-			LECTURA >> telefono_t;
+			LECTURA >> num_t;
 			
-			Lista_Clientes[i].Set_telefono(telefono_t);
+			Lista_Clientes[i].Set_telefono(num_t);
 			
 			LECTURA >> espacio_t;
-			LECTURA >> dni_t;
+			LECTURA >> num_t;
 					
-			Lista_Clientes[i].Set_dni(dni_t);
+			Lista_Clientes[i].Set_dni(num_t);
+			
+			LECTURA >> espacio_t;
+			LECTURA >> dia_t;
+			
+			LECTURA >> espacio_t;
+			LECTURA >> mes_t;
+			
+			LECTURA >> espacio_t;
+			LECTURA >> year_t;
+			
+			Lista_Clientes[i].Set_inscripcion(dia_t, mes_t, year_t);
+			
+			LECTURA >> espacio_t;
+			LECTURA >> num_t;
+
+			Lista_Clientes[i].Set_puntos(num_t);
 		} 
 
 		delete [] nombre_t;
@@ -343,7 +359,7 @@ void Cliente_Metodos::Guardar()
 		LECTURA.open("Clientes.txt");
 		ESCRITURA.open("Clientes_temp.txt", std::ios::app);
 		
-		ESCRITURA << "Nombre     ->     Telefono     ->     DNI" << "\n\n";
+		ESCRITURA << "Nombre     ->     Telefono     ->     DNI     ->     Inscripcion     ->     Puntos" << "\n\n";
 		
 		ESCRITURA << size << "\n\n";
 		
@@ -351,7 +367,9 @@ void Cliente_Metodos::Guardar()
 		{
 			ESCRITURA << Lista_Clientes[i].Get_nombre() << " | ";
 			ESCRITURA << Lista_Clientes[i].Get_telefono() << " | ";
-			ESCRITURA << Lista_Clientes[i].Get_dni() << "\n\n";
+			ESCRITURA << Lista_Clientes[i].Get_dni() << " | ";
+			ESCRITURA << Lista_Clientes[i].Get_inscripcion() << " | ";
+			ESCRITURA << Lista_Clientes[i].Get_puntos() << "\n\n";
 		}
 
 		ESCRITURA.close();

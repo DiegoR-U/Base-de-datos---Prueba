@@ -19,7 +19,7 @@ Menu_de_inicio::Menu_de_inicio()
 		/* prueba = "prueba";
 		Registro1(prueba, 11, 12, 2024) */
 	}
-	
+
 void Menu_de_inicio::Mostrar_menu()
 	{
 		std::system(CLEAR_COMMAND);
@@ -37,13 +37,15 @@ void Menu_de_inicio::Mostrar_menu()
 		std::cout << "					                              -------------- 					                            " << std::endl;
 		std::cout << "					                             | 1. Personas  |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << std::endl;
-		std::cout << "					                             | 2. Vehiculos |					                            " << std::endl;
+		std::cout << "					                             | 2. Clientes  |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << std::endl;
-		std::cout << "					                             | 3. Ganancias |					                            " << std::endl;
+		std::cout << "					                             | 3. Vehiculos |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << std::endl;
-		std::cout << "					                             | 4. Formato   |					                            " << std::endl;
+		std::cout << "					                             | 4. Ganancias |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << std::endl;
-		std::cout << "					                             | 5. Salir     |					                            " << std::endl;
+		std::cout << "					                             | 5. Formato   |					                            " << std::endl;
+		std::cout << "					                              -------------- 					                            " << std::endl;
+		std::cout << "					                             | 6. Salir     |					                            " << std::endl;
 		std::cout << "					                              -------------- 					                            " << "\n\n\n";
 		
 		
@@ -54,27 +56,31 @@ void Menu_de_inicio::Mostrar_menu()
 			std::cin >> Elegir_funcion;
 			std::cout<< "\x1b[0m";
 			
-		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5);
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
 		
 		
 		//CONDICIONAL QUE DIRIGE A LA OPCION SELECCIONADA POR EL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: Menu_Personas();
+			case 1: Menu_Empleados();
 					break;
-			case 2: Menu_Vehiculos();
+			case 2: Menu_Clientes();
 					break;
-			case 3: Menu_Ganancias();
+			case 3: Menu_Vehiculos();
 					break;
-			case 4: Menu_Inscripcion();
+			case 4: Menu_Ganancias();
 					break;
-			case 5: std::cout << "Programa terminado" << std::endl;
+			case 5: Menu_Registro();
+					break;
+			case 6: Salir();
 					break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
+		if (Elegir_funcion == 1 || Elegir_funcion == 2 || Elegir_funcion == 3 || Elegir_funcion == 4 || Elegir_funcion == 5)
+			Mostrar_menu();
 	}
 	
-void Menu_de_inicio::Menu_Personas()
+void Menu_de_inicio::Menu_Empleados()
 	{
 		std::system(CLEAR_COMMAND);
 		std::cout << "\x1B[H";
@@ -88,19 +94,15 @@ void Menu_de_inicio::Menu_Personas()
 		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
 		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
 		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
-		std::cout << "					                        -------------------------- 					                            " << std::endl;
-		std::cout << "					                       | 1. Lista de emplados     |					                            " << std::endl;
-		std::cout << "					                        -------------------------- 					                            " << std::endl;
-		std::cout << "					                       | 2. Añadir empleado       |					                            " << std::endl;
-		std::cout << "					                        -------------------------- 					                            " << std::endl;
-		std::cout << "					                       | 3. Quitar empleado       |					                            " << std::endl;
-		std::cout << "					                        --------------------------					                            " << std::endl;
-		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
-		std::cout << "					                        --------------------------			                                    " << std::endl;
-		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
-		std::cout << "					                        --------------------------					                            " << std::endl;
-		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
-		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+		std::cout << "					                             -----------------				                                " << std::endl;
+		std::cout << "					                            | 1. Conductores  |					                            " << std::endl;
+		std::cout << "					                             -----------------				                                " << std::endl;
+		std::cout << "					                            | 2. Tecnicos     |					                            " << std::endl;
+		std::cout << "					                             ----------------- 					                            " << std::endl;
+		std::cout << "					                            | 3. Supervisores |					                            " << std::endl;
+		std::cout << "					                             ----------------- 					                            " << std::endl;
+		std::cout << "					                            | 4. Salir        |				                                " << std::endl;
+		std::cout << "					                             -----------------			                                    " << "\n\n\n";
 		
 		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
 		do
@@ -109,27 +111,71 @@ void Menu_de_inicio::Menu_Personas()
 			std::cin >> Elegir_funcion;
 			std::cout<< "\x1b[0m";
 			
-		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4);
 		
 		
 		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
 		switch (Elegir_funcion)
 		{
-			case 1: ListaP.Listar_personas();
+			case 1: Menu_Conductores();
 					break;
-			case 2: ListaP.Anadir_personas();
+			case 2: Menu_Tecnicos();
 					break;
-			case 3: ListaP.Quitar_personas();
+			case 3: Menu_Supervisores();
 					break;
-			case 4: ListaP.Mostrar_informacion_personas();
+			case 4: Mostrar_menu();
 					break;
-			case 5: ListaP.Modificar_informacion_personas();
-					break;
-			case 6: break;
 			default: std::cout << "Esto nunca debio pasar";
 		}
 		
-		Menu_Personas();
+		if (Elegir_funcion == 1 || Elegir_funcion == 2 || Elegir_funcion == 3)
+			Menu_Empleados();
+	}
+
+void Menu_de_inicio::Menu_Clientes()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                      ------------------------				                                " << std::endl;
+		std::cout << "					                     | 1. Clientes habituales |					                            " << std::endl;
+		std::cout << "					                      ------------------------				                                " << std::endl;
+		std::cout << "					                     | 2. Clientes de empresa |					                            " << std::endl;
+		std::cout << "					                      ------------------------				                                " << std::endl;
+		std::cout << "					                     | 3. Salir               |				                                " << std::endl;
+		std::cout << "					                      ------------------------				                                " << std::endl;
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4);
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: Menu_Cliente_Habitual();
+					break;
+			case 2: Menu_Cliente_Empresarial();
+					break;
+			case 3: break;
+			default: std::cout << "Esto nunca debio pasar";
+		}
+		
+		Menu_Clientes();
 	}
 
 void Menu_de_inicio::Menu_Vehiculos()
@@ -236,7 +282,7 @@ void Menu_de_inicio::Menu_Ganancias()
 		Menu_Ganancias();
 	}
 	
-void Menu_de_inicio::Menu_Inscripcion()
+void Menu_de_inicio::Menu_Registro()
 	{
 		std::system(CLEAR_COMMAND);
 		std::cout << "\x1B[H";
@@ -281,5 +327,303 @@ void Menu_de_inicio::Menu_Inscripcion()
 			
 		} 
 		
-		Menu_Inscripcion(); */
+		Menu_Registro(); */
+	}
+	
+void Menu_de_inicio::Menu_Conductores()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 1. Lista de conductores  |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 2. Añadir conductores    |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 3. Quitar conductores    |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << std::endl;
+		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: ListaP.Listar_conductores();
+					break;
+			case 2: ListaP.Anadir_conductores();
+					break;
+			case 3: ListaP.Quitar_conductores();
+					break;
+			case 4: ListaP.Mostrar_informacion_conductores();
+					break;
+			case 5: ListaP.Modificar_informacion_conductores();
+					break;
+			case 6: Mostrar_menu();
+					break;
+			default: std::cout << "Esto nunca debio pasar";
+		}
+		
+		if (Elegir_funcion == 1 || Elegir_funcion == 2 || Elegir_funcion == 3 || Elegir_funcion == 4 || Elegir_funcion == 5)
+			Menu_Conductores();
+	}
+	
+void Menu_de_inicio::Menu_Tecnicos()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 1. Lista de tecnicos     |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 2. Añadir tecnicos       |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 3. Quitar tecnicos       |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << std::endl;
+		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: ListaP.Listar_conductores();
+					break;
+			case 2: ListaP.Anadir_conductores();
+					break;
+			case 3: ListaP.Quitar_conductores();
+					break;
+			case 4: ListaP.Mostrar_informacion_conductores();
+					break;
+			case 5: ListaP.Modificar_informacion_conductores();
+					break;
+			case 6: break;
+			default: std::cout << "Esto nunca debio pasar";
+		}
+		
+		Menu_Tecnicos();
+	}
+	
+void Menu_de_inicio::Menu_Supervisores()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 1. Lista de supervisores |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 2. Añadir supervisores   |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 3. Quitar supervisores   |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << std::endl;
+		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: ListaP.Listar_conductores();
+					break;
+			case 2: ListaP.Anadir_conductores();
+					break;
+			case 3: ListaP.Quitar_conductores();
+					break;
+			case 4: ListaP.Mostrar_informacion_conductores();
+					break;
+			case 5: ListaP.Modificar_informacion_conductores();
+					break;
+			case 6: break;
+			default: std::cout << "Esto nunca debio pasar";
+		}
+		
+		Menu_Supervisores();
+	}
+	
+void Menu_de_inicio::Menu_Cliente_Habitual()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 1. Lista de clientes     |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 2. Añadir clientes       |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 3. Quitar clientes       |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << std::endl;
+		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: ListaP.Listar_conductores();
+					break;
+			case 2: ListaP.Anadir_conductores();
+					break;
+			case 3: ListaP.Quitar_conductores();
+					break;
+			case 4: ListaP.Mostrar_informacion_conductores();
+					break;
+			case 5: ListaP.Modificar_informacion_conductores();
+					break;
+			case 6: break;
+			default: std::cout << "Esto nunca debio pasar";
+		}
+		
+		Menu_Cliente_Habitual();
+	}
+	
+void Menu_de_inicio::Menu_Cliente_Empresarial()
+	{
+		std::system(CLEAR_COMMAND);
+		std::cout << "\x1B[H";
+		
+		//MENU DE EMPLEADOS - PRUEBA
+		std::cout<< "\x1b[38;5;182m";
+		std::cout << "					  ......     ..     ..     ......       ..          .......      ..    ..                   " << std::endl;
+		std::cout << "					  ..         ...   ...     ..    ..     ..         ..     ..     ..    ..                   " << std::endl;
+		std::cout << " 					  ..         .... ....     ..    ..     ..         ..     ..      ..  ..                    " << std::endl;
+		std::cout << "					  ......     ..  .  ..     ......       ..         ..     ..        ..                      " << std::endl;    
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ..         ..     ..     ..           ..         ..     ..        ..                      " << std::endl;
+		std::cout << "					  ......     ..     ..     ..           ......      .......         ..                      " << "\n\n\n\n";
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 1. Lista de empresarios  |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 2. Añadir empresarios    |					                            " << std::endl;
+		std::cout << "					                        -------------------------- 					                            " << std::endl;
+		std::cout << "					                       | 3. Quitar empresarios    |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 4. Mostrar informacion   |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << std::endl;
+		std::cout << "					                       | 5. Modificar informacion |					                            " << std::endl;
+		std::cout << "					                        --------------------------					                            " << std::endl;
+		std::cout << "					                       | 6. Salir                 |				                                " << std::endl;
+		std::cout << "					                        --------------------------			                                    " << "\n\n\n";
+		
+		//SELECCION DE OPCION Y VALIDACION DE INFORMACION
+		do
+		{
+			std::cout << "					                      Elige la opcion a tomar: ";
+			std::cin >> Elegir_funcion;
+			std::cout<< "\x1b[0m";
+			
+		} while(Elegir_funcion!=1 && Elegir_funcion!=2 && Elegir_funcion!=3 && Elegir_funcion!=4 && Elegir_funcion!=5 && Elegir_funcion!=6);
+		
+		
+		//CONDICIONAL QUE DIRIGE A LA OPCION DEL USUARIO
+		switch (Elegir_funcion)
+		{
+			case 1: ListaP.Listar_conductores();
+					break;
+			case 2: ListaP.Anadir_conductores();
+					break;
+			case 3: ListaP.Quitar_conductores();
+					break;
+			case 4: ListaP.Mostrar_informacion_conductores();
+					break;
+			case 5: ListaP.Modificar_informacion_conductores();
+					break;
+			case 6: break;
+			default: std::cout << "Esto nunca debio pasar";
+		}
+		
+		Menu_Cliente_Empresarial();
+	}
+
+void Menu_de_inicio::Salir()
+	{
+		std::cout << "Programa terminado" << std::endl;
+		ListaP.Guardar();
 	}

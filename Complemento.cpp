@@ -68,7 +68,7 @@ void Complemento::Memoria_justa_cadena(char *&x, int c, char *llenar)
 		if (llenar == nullptr)
 		{
 			std::cin.ignore();				//importante poner antes de un getline
-			std::cin.getline(temporal, c);
+			std::cin.getline(temporal, c, '\n'); //
 			
 			size = Longitud_Puntero(temporal);
 			

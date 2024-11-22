@@ -1,8 +1,8 @@
-#ifndef Empleados_Metodos_h
-#define Empleados_Metodos_h
+#ifndef Cliente_Metodos_h
+#define Cliente_Metodos_h
 
 #include <fstream>
-#include "Persona.hpp"
+#include "Cliente.hpp"
 
 class Cliente_Metodos{
 	public:

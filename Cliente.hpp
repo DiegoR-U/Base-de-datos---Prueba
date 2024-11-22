@@ -3,8 +3,9 @@
 
 #include "Complemento.hpp"
 #include "Fecha.hpp"
+#include "Persona.hpp"
 
-class Cliente{
+class Cliente : public Persona{
 	public:
 	explicit Cliente();
 	void Set_puntos(int p);

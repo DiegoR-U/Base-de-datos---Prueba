@@ -14,7 +14,6 @@ int main()
 	std::system(CLEAR_COMMAND);            // Comando para borrar todo el contenido de la pantalla
     std::cout << "\x1B[H";          // Codigo para colocar el cursor en el canto superior izquierdo
 	
-	std::cout << "Si llega";
 	Menu_de_inicio menu;
 	menu.Mostrar_menu();
 	

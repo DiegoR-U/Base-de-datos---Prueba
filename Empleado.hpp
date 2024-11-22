@@ -25,7 +25,7 @@ class Empleado : public Persona{
 	int Get_edad() const;
 	Empleado& operator=(Empleado& E);
 
-	private:
+	protected:
 	Fecha Contrato;
 	Fecha Nacimiento;
 	char *Email;
