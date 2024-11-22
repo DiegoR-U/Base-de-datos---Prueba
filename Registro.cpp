@@ -1,3 +1,4 @@
+/*
 #include "registro.hpp"
 registro::registro(char _nombre[100], int _d, int _m, int _y, int _inversion){
   if(nombre != nullptr){
@@ -83,4 +84,4 @@ int getingreso(){
 void setingreso(int x){
   ingreso = x;
   return;
-}
+} */
