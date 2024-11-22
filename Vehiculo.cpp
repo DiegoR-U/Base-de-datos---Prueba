@@ -44,15 +44,20 @@ Vehiculo::Vehiculo(Vehiculo &o)
 	
 Vehiculo::~Vehiculo()
 	{
-		comprobar.Borrar_Puntero(marcaAuto);
-		comprobar.Borrar_Puntero(placa);
-		comprobar.Borrar_Puntero(estado);
-		comprobar.Borrar_Puntero(color);
+		if (marcaAuto != nullptr)
+			delete [] marcaAuto;
+		if (placa != nullptr)
+			delete [] placa;
+		if (color != nullptr)
+			delete [] color;
+		if (estado != nullptr)
+			delete [] estado;
 	}
 
 void Vehiculo::setMarca(Complemento c, char *llenarmarca)
 	{
-		c.Borrar_Asignar_ptr(marcaAuto);
+		if (marcaAuto != nullptr)
+			delete [] marcaAuto;
 		c.Set_Complemento_temp(20);
 		if (llenarmarca == nullptr)
 		{
@@ -66,7 +71,8 @@ void Vehiculo::setMarca(Complemento c, char *llenarmarca)
 
 void Vehiculo::setPlaca(Complemento c, char *llenarplaca)
 	{
-		c.Borrar_Asignar_ptr(placa);
+		if (placa != nullptr)
+			delete [] placa;
 		c.Set_Complemento_temp(8);
 		if (llenarplaca == nullptr)
 		{
@@ -80,7 +86,8 @@ void Vehiculo::setPlaca(Complemento c, char *llenarplaca)
 
 void Vehiculo::setColor(Complemento c, char *llenarcolor)
 	{
-		c.Borrar_Asignar_ptr(color);
+		if (color != nullptr)
+			delete [] color;
 		c.Set_Complemento_temp(15);
 		if (llenarcolor == nullptr)
 		{
@@ -94,7 +101,8 @@ void Vehiculo::setColor(Complemento c, char *llenarcolor)
 
 void Vehiculo::setEstado(Complemento c, char *llenarestado)
 	{
-		c.Borrar_Asignar_ptr(estado);
+		if (estado != nullptr)
+			delete [] estado;
 		c.Set_Complemento_temp(11);
 		if (llenarestado == nullptr)
 		{
