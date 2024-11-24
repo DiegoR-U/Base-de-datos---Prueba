@@ -28,48 +28,29 @@ Conductor::~Conductor()
 		}
 	}
 
-void Conductor::Set_licencia(Complemento c)
+void Conductor::Set_licencia()
 	{
-		c.Borrar_Asignar_ptr(Numero_licencia);
-		
-		c.Set_Complemento_temp(11);
-			
-		c.Memoria_justa_cadena(Numero_licencia, 11, nullptr);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(Numero_licencia);	
+		Memoria_justa_cadena(Numero_licencia, 11, nullptr);
 	}
 	
-void Conductor::Set_licencia(Complemento c, char*& llenar)
+void Conductor::Set_licencia(char*& llenar)
 	{
-		c.Borrar_Asignar_ptr(Numero_licencia);
-		
-		c.Set_Complemento_temp(11);
-		
-		c.Memoria_justa_cadena(Numero_licencia, 11, llenar);
+		Borrar_Asignar_ptr(Numero_licencia);
+		Memoria_justa_cadena(Numero_licencia, 11, llenar);
 
-		c.Set_Complemento_size(0);
 	}
 
-void Conductor::Set_nivel(Complemento c)
+void Conductor::Set_nivel()
 	{
-		c.Borrar_Asignar_ptr(Nivel);
-		
-		c.Set_Complemento_temp(3);
-			
-		c.Memoria_justa_cadena(Nivel, 3, nullptr);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(Nivel);
+		Memoria_justa_cadena(Nivel, 3, nullptr);
 	}
 
-void Conductor::Set_nivel(Complemento c, char*& llenar)
+void Conductor::Set_nivel(char*& llenar)
 	{
-		c.Borrar_Asignar_ptr(Nivel);
-		
-		c.Set_Complemento_temp(3);
-		
-		c.Memoria_justa_cadena(Nivel, 3, llenar);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(Nivel);
+		Memoria_justa_cadena(Nivel, 3, llenar);
 	}
 	
 void Conductor::Set_vencimiento(int d, int m, int y)
@@ -103,24 +84,15 @@ Fecha& Conductor::Get_vencimiento()
 
 Conductor& Conductor::operator=(Conductor& C)
 	{
-		Complemento p;
-	
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(nombre, 60, C.Get_nombre());
-		p.Set_Complemento_size(0);
+		Memoria_justa_cadena(nombre, 60, C.Get_nombre());
 		
 		this->telefono = C.Get_telefono();
 		
 		this->DNI = C.Get_dni();
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(Email, 60, C.Get_email());
-		p.Set_Complemento_size(0);
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(Direccion, 60, C.Get_direccion());
-		p.Set_Complemento_size(0);
-		
+
+		Memoria_justa_cadena(Email, 60, C.Get_email());
+		Memoria_justa_cadena(Direccion, 60, C.Get_direccion());
+
 		this->Salario = C.Get_salario();
 		
 		this->Contrato = C.Get_Contrato();
@@ -129,13 +101,8 @@ Conductor& Conductor::operator=(Conductor& C)
 		
 		this->Edad = C.Get_edad();
 		
-		p.Set_Complemento_temp(11);
-		p.Memoria_justa_cadena(Numero_licencia, 11, C.Get_licencia());
-		p.Set_Complemento_size(0);
-		
-		p.Set_Complemento_temp(3);
-		p.Memoria_justa_cadena(Nivel, 3, C.Get_nivel());
-		p.Set_Complemento_size(0);
+		Memoria_justa_cadena(Numero_licencia, 11, C.Get_licencia());
+		Memoria_justa_cadena(Nivel, 3, C.Get_nivel());
 		
 		this->Vencimiento = C.Get_vencimiento();
 		

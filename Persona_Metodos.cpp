@@ -12,7 +12,6 @@
 	
 Persona_Metodos::Persona_Metodos()
 	{
-		comp;
 		size = 0;
 		Lista_Personas = nullptr;
 	}
@@ -36,7 +35,7 @@ void Persona_Metodos::Listar_personas()
 			{
 				std::cin >> MIN_R;
 				std::cout << "\n\n";
-				comp.Convertir_mayusculas_minusculas(MIN_R, 0);
+				Convertir_mayusculas_minusculas(MIN_R, 0);
 				if ((int(MIN_R) > 90 && int(MIN_R) < 97) || (int(MIN_R) > 122) || (int(MIN_R) < 65))
 				{
 					std::cout << "Ingrese una letra valida" << "\n\n";
@@ -49,7 +48,7 @@ void Persona_Metodos::Listar_personas()
 			{
 				std::cin >> MAX_R;
 				std::cout << "\n\n";
-				comp.Convertir_mayusculas_minusculas(MAX_R, 0);
+				Convertir_mayusculas_minusculas(MAX_R, 0);
 				if ((int(MAX_R) > 90 && int(MAX_R) < 97) || (int(MAX_R) > 122) || (int(MAX_R) < 65))
 				{
 					std::cout << "Ingrese una letra valida" << "\n\n";
@@ -90,7 +89,7 @@ void Persona_Metodos::Anadir_personas()
 		delete [] Lista_Personas;
 		
 		std::cout << "Que nombre tiene la persona?" << "\n\n";
-		Lista_temp[size].Set_nombre(comp);
+		Lista_temp[size].Set_nombre();
 		std::cout << "\n\n";
 		
 		std::cout << "Que telefono tiene la persona?" << "\n\n";
@@ -238,7 +237,7 @@ void Persona_Metodos::Modificar_informacion_personas()
 					std::cout << "Quieres cambiar el nombre? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Personas[i].Set_nombre(comp);
+						Lista_Personas[i].Set_nombre();
 					
 					std::cout << "Quieres cambiar el telefono? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
@@ -264,7 +263,7 @@ void Persona_Metodos::Determinar_tamano()
 		ESCRITURA.open("Personas.txt", std::ios::app);
 		LECTURA.open("Personas.txt");
 		
-		if (comp.Contenido_archivo(LECTURA))
+		if (Contenido_archivo(LECTURA))
 		{
 			LECTURA >> size;
 			Lista_Personas = new Persona[size];
@@ -298,7 +297,7 @@ void Persona_Metodos::Llenar()
 		{
 			LECTURA.getline(nombre_t, 60, '|');
 					
-			Lista_Personas[i].Set_nombre(comp, nombre_t);
+			Lista_Personas[i].Set_nombre(nombre_t);
 			
 			LECTURA >> telefono_t;
 			

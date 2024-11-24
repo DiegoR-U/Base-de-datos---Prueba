@@ -58,48 +58,30 @@ void Empleado::Set_Nacimiento(int d, int m, int y)
 		}
 	}
 
-void Empleado::Set_email(Complemento c)
+void Empleado::Set_email()
 	{
-		c.Borrar_Asignar_ptr(Email);
-		
-		c.Set_Complemento_temp(60);
-			
-		c.Memoria_justa_cadena(Email, 60, nullptr);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(Email);
+		Memoria_justa_cadena(Email, 60, nullptr);
 	}
 
-void Empleado::Set_email(Complemento c, char*& llenar)
+void Empleado::Set_email(char*& llenar)
 	{
-		c.Borrar_Asignar_ptr(Email);
-		
-		c.Set_Complemento_temp(60);
-		
-		c.Memoria_justa_cadena(Email, 60, llenar);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(Email);
+		Memoria_justa_cadena(Email, 60, llenar);
 	}
 
-void Empleado::Set_direccion(Complemento c)
+void Empleado::Set_direccion()
 	{
-		c.Borrar_Asignar_ptr(Direccion);
-		
-		c.Set_Complemento_temp(60);
-			
-		c.Memoria_justa_cadena(Direccion, 60, nullptr);
+		Borrar_Asignar_ptr(Direccion);
+		Memoria_justa_cadena(Direccion, 60, nullptr);
 
-		c.Set_Complemento_size(0);
 	}
 
-void Empleado::Set_direccion(Complemento c, char*& llenar)
+void Empleado::Set_direccion(char*& llenar)
 	{
-		c.Borrar_Asignar_ptr(Direccion);
-		
-		c.Set_Complemento_temp(60);
-		
-		c.Memoria_justa_cadena(Direccion, 60, llenar);
+		Borrar_Asignar_ptr(Direccion);
+		Memoria_justa_cadena(Direccion, 60, llenar);
 
-		c.Set_Complemento_size(0);
 	}
 	
 void Empleado::Set_salario(float s)
@@ -145,24 +127,14 @@ Fecha& Empleado::Get_Nacimiento()
 
 Empleado& Empleado::operator=(Empleado& E)
 	{
-		Complemento p;
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(nombre, 60, E.Get_nombre());
-		p.Set_Complemento_size(0);
+		Memoria_justa_cadena(nombre, 60, E.Get_nombre());
+		Memoria_justa_cadena(Email, 60, E.Get_email());
+		Memoria_justa_cadena(Direccion, 60, E.Get_direccion());
 		
 		this->telefono = E.Get_telefono();
 		
 		this->DNI = E.Get_dni();
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(Email, 60, E.Get_email());
-		p.Set_Complemento_size(0);
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(Direccion, 60, E.Get_direccion());
-		p.Set_Complemento_size(0);
-		
+
 		this->Salario = E.Get_salario();
 		
 		this->Contrato = E.Get_Contrato();

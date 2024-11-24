@@ -12,7 +12,6 @@
 	
 Conductor_Metodos::Conductor_Metodos()
 	{
-		comp;
 		size = 0;
 		Lista_Conductor = nullptr;
 		ESCRITURA.open("Conductores_temp.csv", std::ios::app);
@@ -44,7 +43,7 @@ void Conductor_Metodos::Listar_conductores()
 			{
 				std::cin >> MIN_R;
 				std::cout << "\n\n";
-				comp.Convertir_mayusculas_minusculas(MIN_R, 0);
+				Convertir_mayusculas_minusculas(MIN_R, 0);
 				if ((int(MIN_R) > 90 && int(MIN_R) < 97) || (int(MIN_R) > 122) || (int(MIN_R) < 65))
 				{
 					std::cout << "Ingrese una letra valida" << "\n\n";
@@ -57,7 +56,7 @@ void Conductor_Metodos::Listar_conductores()
 			{
 				std::cin >> MAX_R;
 				std::cout << "\n\n";
-				comp.Convertir_mayusculas_minusculas(MAX_R, 0);
+				Convertir_mayusculas_minusculas(MAX_R, 0);
 				if ((int(MAX_R) > 90 && int(MAX_R) < 97) || (int(MAX_R) > 122) || (int(MAX_R) < 65))
 				{
 					std::cout << "Ingrese una letra valida" << "\n\n";
@@ -117,7 +116,7 @@ void Conductor_Metodos::Anadir_conductores()
 		delete [] Lista_Conductor;
 		
 		std::cout << "Que nombre tiene el conductor?" << "\n\n";
-		Lista_temp[size].Set_nombre(comp);
+		Lista_temp[size].Set_nombre();
 		std::cout << "\n\n";
 		
 		std::cout << "Que telefono tiene el conductor?" << "\n\n";
@@ -131,11 +130,11 @@ void Conductor_Metodos::Anadir_conductores()
 		std::cout << "\n\n";
 		
 		std::cout << "Que email tiene el conductor?" << "\n\n";
-		Lista_temp[size].Set_email(comp);
+		Lista_temp[size].Set_email();
 		std::cout << "\n\n";
 		
 		std::cout << "Que direccion tiene el conductor?" << "\n\n";
-		Lista_temp[size].Set_direccion(comp);
+		Lista_temp[size].Set_direccion();
 		std::cout << "\n\n";
 		
 		std::cout << "Cuando se contrato al conductor?" << "\n\n";
@@ -157,11 +156,11 @@ void Conductor_Metodos::Anadir_conductores()
 		std::cout << "\n\n";
 		
 		std::cout << "Que licencia tiene el conductor?" << "\n\n";
-		Lista_temp[size].Set_licencia(comp);
+		Lista_temp[size].Set_licencia();
 		std::cout << "\n\n";
 		
 		std::cout << "Que nivel tiene el conductor?" << "\n\n";
-		Lista_temp[size].Set_nivel(comp);
+		Lista_temp[size].Set_nivel();
 		std::cout << "\n\n";
 		
 		std::cout << "Cuando vence la licencia del conductor?" << "\n\n";
@@ -332,7 +331,7 @@ void Conductor_Metodos::Modificar_informacion_conductores()
 					std::cout << "Quieres cambiar el nombre? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Conductor[i].Set_nombre(comp);
+						Lista_Conductor[i].Set_nombre();
 					
 					std::cout << "Quieres cambiar el telefono? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
@@ -346,12 +345,12 @@ void Conductor_Metodos::Modificar_informacion_conductores()
 					std::cout << "Quieres cambiar el email? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Conductor[i].Set_email(comp);
+						Lista_Conductor[i].Set_email();
 					
 					std::cout << "Quieres cambiar la direccion? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Conductor[i].Set_direccion(comp);
+						Lista_Conductor[i].Set_direccion();
 					
 					std::cout << "Quieres cambiar la fecha de coontrato? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
@@ -384,12 +383,12 @@ void Conductor_Metodos::Modificar_informacion_conductores()
 					std::cout << "Quieres cambiar la licencia? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Conductor[i].Set_licencia(comp);
+						Lista_Conductor[i].Set_licencia();
 					
 					std::cout << "Quieres cambiar el nivel? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Conductor[i].Set_nivel(comp);
+						Lista_Conductor[i].Set_nivel();
 					
 					std::cout << "Quieres cambiar el vencimiento? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
@@ -408,7 +407,7 @@ void Conductor_Metodos::Modificar_informacion_conductores()
 	
 void Conductor_Metodos::Determinar_tamano()
 	{
-		if (comp.Contenido_archivo(LECTURA))
+		if (Contenido_archivo(LECTURA))
 		{
 			LECTURA >> size;
 			Lista_Conductor = new Conductor[size];
@@ -439,7 +438,7 @@ void Conductor_Metodos::Llenar()
 			LECTURA.getline(temp, '\n');
 			
 			LECTURA.getline(temp, ';');
-			Lista_Conductor[i].Set_nombre(comp, temp);
+			Lista_Conductor[i].Set_nombre(temp);
 			
 			LECTURA >> num;
 			Lista_Conductor[i].Set_telefono(num);
@@ -452,10 +451,10 @@ void Conductor_Metodos::Llenar()
 			LECTURA.getline(temp, ';');
 			
 			LECTURA.getline(temp, ';');
-			Lista_Conductor[i].Set_email(comp, temp);
+			Lista_Conductor[i].Set_email(temp);
 			
 			LECTURA.getline(temp, ';');
-			Lista_Conductor[i].Set_direccion(comp, temp);
+			Lista_Conductor[i].Set_direccion(temp);
 
 			
 			LECTURA >> dia_t;
@@ -487,10 +486,10 @@ void Conductor_Metodos::Llenar()
 			LECTURA.getline(temp, ';');
 			
 			LECTURA.getline(temp, ';');
-			Lista_Conductor[i].Set_licencia(comp, temp);
+			Lista_Conductor[i].Set_licencia(temp);
 			
 			LECTURA.getline(temp, ';');
-			Lista_Conductor[i].Set_nivel(comp, temp);
+			Lista_Conductor[i].Set_nivel(temp);
 			
 			LECTURA.getline(temp, ';');
 			

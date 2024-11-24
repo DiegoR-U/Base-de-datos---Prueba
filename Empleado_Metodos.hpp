@@ -3,6 +3,7 @@
 
 #include <fstream>
 #include "Empleado.hpp"
+#include "Complemento.hpp"
 
 class Empleados_Metodos{
 	public:
@@ -20,8 +21,7 @@ class Empleados_Metodos{
 	private:
 	std::ifstream LECTURA;
 	std::ofstream ESCRITURA;
-	Complemento comp;
 	int size;
-	Empleados* Lista_Empleados;
+	Empleado* Lista_Empleados;
 };
 #endif

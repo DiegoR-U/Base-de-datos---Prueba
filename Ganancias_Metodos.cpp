@@ -3,7 +3,6 @@
 
 Ganancias_Metodos::Ganancias_Metodos()
 	{         
-		complm;
 		size = 0;
 		Lista_Ganancias = nullptr;
 	}
@@ -144,7 +143,7 @@ void Ganancias_Metodos::Determinar_tamano()
 		WRITE.open("Ganancias.txt", std::ios::app);
 		READ.open("Ganancias.txt");
 		
-		if (complm.Contenido_archivo(READ))
+		if (Contenido_archivo(READ))
 		{
 			READ >> size;
 			Lista_Ganancias = new Ganancias[size];

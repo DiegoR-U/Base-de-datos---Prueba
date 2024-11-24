@@ -16,11 +16,10 @@ private:
 
 public:
    
-    Complemento comprobar;
-
     Vehiculo_Metodos();
     Vehiculo_Metodos(Vehiculo_Metodos &o); 
     ~Vehiculo_Metodos();
+    
     
     void agregarVehiculo();
     void quitarVehiculo();

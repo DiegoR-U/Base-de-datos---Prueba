@@ -2,6 +2,7 @@
 #define Persona_Metodos_h
 
 #include <fstream>
+#include "Complemento.hpp"
 #include "Persona.hpp"
 
 class Persona_Metodos{
@@ -20,7 +21,6 @@ class Persona_Metodos{
 	private:
 	std::ifstream LECTURA;
 	std::ofstream ESCRITURA;
-	Complemento comp;
 	int size;
 	Persona* Lista_Personas;
 };

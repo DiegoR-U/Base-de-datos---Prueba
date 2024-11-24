@@ -7,8 +7,8 @@ class Persona{
 	public:
 	explicit Persona();
 	~Persona();
-	void Set_nombre(Complemento c);
-	void Set_nombre(Complemento c, char*& llenar);
+	void Set_nombre();
+	void Set_nombre(char*& llenar);
 	char *Get_nombre() const;
 	void Set_telefono(int i);
 	int Get_telefono() const;

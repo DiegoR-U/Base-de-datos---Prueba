@@ -6,6 +6,7 @@
 #include "Persona.hpp"
 
 class Cliente : public Persona{
+	
 	public:
 	explicit Cliente();
 	void Set_puntos(int p);

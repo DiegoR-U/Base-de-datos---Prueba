@@ -20,7 +20,6 @@ class Conductor_Metodos{
 	private:
 	std::ifstream LECTURA;
 	std::ofstream ESCRITURA;
-	Complemento comp;
 	int size;
 	Conductor* Lista_Conductor;
 };

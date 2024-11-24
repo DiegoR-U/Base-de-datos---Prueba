@@ -13,21 +13,19 @@ private:
 
 public:
 	
-	Complemento comprobar;
-	
 	Vehiculo();
 	Vehiculo(Vehiculo &o);
 	~Vehiculo();
 	 
-	void setMarca(Complemento c, char* llenarMarca);
-	void setPlaca(Complemento c, char* llenarPlaca);
-	void setColor(Complemento c, char* llenarColor);
-	void setEstado(Complemento c, char* llenarEstado);
+	void setMarca(char* llenarMarca);
+	void setPlaca(char* llenarPlaca);
+	void setColor(char* llenarColor);
+	void setEstado(char* llenarEstado);
 
 	char* getMarca();
 	char* getPlaca();
 	char* getColor();
 	char* getEstado();
-	
+
 };
 #endif

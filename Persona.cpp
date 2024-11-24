@@ -24,26 +24,16 @@ Persona::~Persona()
 			delete [] nombre;
 		}
 	}
-void Persona::Set_nombre(Complemento c)
+void Persona::Set_nombre()
 	{
-		c.Borrar_Asignar_ptr(nombre);
-		
-		c.Set_Complemento_temp(60);
-			
-		c.Memoria_justa_cadena(nombre, 60, nullptr);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(nombre);	
+		Memoria_justa_cadena(nombre, 60, nullptr);
 	}
 
-void Persona::Set_nombre(Complemento c, char*& llenar)
+void Persona::Set_nombre(char*& llenar)
 	{
-		c.Borrar_Asignar_ptr(nombre);
-		
-		c.Set_Complemento_temp(60);
-		
-		c.Memoria_justa_cadena(nombre, 60, llenar);
-
-		c.Set_Complemento_size(0);
+		Borrar_Asignar_ptr(nombre);
+		Memoria_justa_cadena(nombre, 60, llenar);
 	}
 
 char* Persona::Get_nombre() const
@@ -73,15 +63,8 @@ int Persona::Get_dni() const
 
 Persona& Persona::operator=(Persona& E)
 	{
-		Complemento p;
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(nombre, 60, E.Get_nombre());
-		p.Set_Complemento_size(0);
-		
+		Memoria_justa_cadena(nombre, 60, E.Get_nombre());
 		this->telefono = E.Get_telefono();
-		
 		this->DNI = E.Get_dni();
-		
 		return *this;
 	}

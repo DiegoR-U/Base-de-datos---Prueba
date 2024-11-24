@@ -2,6 +2,7 @@
 #define Ganancias_Metodos_h
 
 #include <fstream>
+#include "Complemento.hpp"
 #include "Ganancias.hpp"
 
 class Ganancias_Metodos {
@@ -18,7 +19,6 @@ class Ganancias_Metodos {
 	private:
 	std::ifstream READ;
 	std::ofstream WRITE;
-	Complemento complm;
 	int size;
 	Ganancias* Lista_Ganancias;
 };

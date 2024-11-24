@@ -46,13 +46,9 @@ Fecha& Cliente::Get_inscripcion()
 
 Cliente& Cliente::operator=(Cliente& E)
 	{
-		Complemento p;
-		
 		this->Inscripcion = E.Get_inscripcion();
-		
-		p.Set_Complemento_temp(60);
-		p.Memoria_justa_cadena(nombre, 60, E.Get_nombre());
-		p.Set_Complemento_size(0);
+
+		Memoria_justa_cadena(nombre, 60, E.Get_nombre());
 		
 		this->telefono = E.Get_telefono();
 		

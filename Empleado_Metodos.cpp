@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Empleado_Metodos.hpp"
+#include "Complemento.hpp"
 
 #ifdef _WIN32
     //#include <windows.h>
@@ -12,7 +13,6 @@
 	
 Empleados_Metodos::Empleados_Metodos()
 	{
-		comp;
 		size = 0;
 		Lista_Empleados = nullptr;
 	}
@@ -36,7 +36,7 @@ void Empleados_Metodos::Listar_empleados()
 			{
 				std::cin >> MIN_R;
 				std::cout << "\n\n";
-				comp.Convertir_mayusculas_minusculas(MIN_R, 0);
+				Convertir_mayusculas_minusculas(MIN_R, 0);
 				if ((int(MIN_R) > 90 && int(MIN_R) < 97) || (int(MIN_R) > 122) || (int(MIN_R) < 65))
 				{
 					std::cout << "Ingrese una letra valida" << "\n\n";
@@ -49,7 +49,7 @@ void Empleados_Metodos::Listar_empleados()
 			{
 				std::cin >> MAX_R;
 				std::cout << "\n\n";
-				comp.Convertir_mayusculas_minusculas(MAX_R, 0);
+				Convertir_mayusculas_minusculas(MAX_R, 0);
 				if ((int(MAX_R) > 90 && int(MAX_R) < 97) || (int(MAX_R) > 122) || (int(MAX_R) < 65))
 				{
 					std::cout << "Ingrese una letra valida" << "\n\n";
@@ -63,7 +63,7 @@ void Empleados_Metodos::Listar_empleados()
 					std::cout << "Nombre :";
 					std::cout << Lista_Empleados[i].Get_nombre() << std::endl;
 					std::cout << "Correo :";
-					std::cout << Lista_Empleados[i].Get_correo() << std::endl;
+					std::cout << Lista_Empleados[i].Get_email() << std::endl;
 					std::cout << "Telefono :";
 					std::cout << Lista_Empleados[i].Get_telefono() << std::endl;
 					std::cout << "DNI :";
@@ -82,7 +82,7 @@ void Empleados_Metodos::Anadir_empleados()
 	{
 		int telefono, DNI;
 		
-		Empleados *Lista_temp = new Empleados[size+1];
+		Empleado *Lista_temp = new Empleado[size+1];
 		
 		for (int i=0; i<size; i++)
 		{
@@ -92,11 +92,11 @@ void Empleados_Metodos::Anadir_empleados()
 		delete [] Lista_Empleados;
 		
 		std::cout << "Que nombre tiene el empleado?" << "\n\n";
-		Lista_temp[size].Set_nombre(comp, nullptr);
+		Lista_temp[size].Set_nombre();
 		std::cout << "\n\n";
 		
 		std::cout << "Que correo tiene el empleado?" << "\n\n";
-		Lista_temp[size].Set_correo(comp, nullptr);
+		Lista_temp[size].Set_email();
 		std::cout << "\n\n";
 		
 		std::cout << "Que telefono tiene el empleado?" << "\n\n";
@@ -109,7 +109,7 @@ void Empleados_Metodos::Anadir_empleados()
 		Lista_temp[size].Set_dni(DNI);
 		std::cout << "\n\n";
 		
-		Lista_Empleados = new Empleados[size+1];
+		Lista_Empleados = new Empleado[size+1];
 		
 		for (int i=0; i<size+1; i++)
 		{
@@ -130,7 +130,7 @@ void Empleados_Metodos::Quitar_empleados()
 			int Incrementar = 0;
 			int DNI_verificar = 0;
 			bool Existe = 0;
-			Empleados *Lista_temp = new Empleados[size-1];
+			Empleado *Lista_temp = new Empleado[size-1];
 			
 			std::cout << "Inserte el DNI del empleado" << std::endl;
 			std::cin >> DNI_verificar;
@@ -155,7 +155,7 @@ void Empleados_Metodos::Quitar_empleados()
 			if (Existe == 1)
 			{
 				delete [] Lista_Empleados;
-				Lista_Empleados = new Empleados[size-1];
+				Lista_Empleados = new Empleado[size-1];
 				
 				for (int i=0; i<size-1; i++)
 				{
@@ -191,7 +191,7 @@ void Empleados_Metodos::Mostrar_informacion_empleado()
 					std::cout << "Nombre :";
 					std::cout << Lista_Empleados[i].Get_nombre() << std::endl;
 					std::cout << "Correo :";
-					std::cout << Lista_Empleados[i].Get_correo() << std::endl;
+					std::cout << Lista_Empleados[i].Get_email() << std::endl;
 					std::cout << "Telefono :";
 					std::cout << Lista_Empleados[i].Get_telefono() << std::endl;
 					std::cout << "DNI :";
@@ -222,12 +222,12 @@ void Empleados_Metodos::Modificar_informacion_empleado()
 					std::cout << "Quieres cambiar el nombre? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Empleados[i].Set_nombre(comp, nullptr);
+						Lista_Empleados[i].Set_nombre();
 					
 					std::cout << "Quieres cambiar el correo? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
 					if (Confirmar == 1)
-						Lista_Empleados[i].Set_correo(comp, nullptr);
+						Lista_Empleados[i].Set_email();
 					
 					std::cout << "Quieres cambiar el telefono? | Presiona 1 para si y 0 para no" << std::endl;
 					std::cin >> Confirmar;
@@ -253,10 +253,10 @@ void Empleados_Metodos::Determinar_tamano()
 		ESCRITURA.open("Empleados.txt", std::ios::app);
 		LECTURA.open("Empleados.txt");
 		
-		if (comp.Contenido_archivo(LECTURA))
+		if (Contenido_archivo(LECTURA))
 		{
 			LECTURA >> size;
-			Lista_Empleados = new Empleados[size];
+			Lista_Empleados = new Empleado[size];
 			ESCRITURA.close();
 			LECTURA.close();
 			Llenar();
@@ -264,7 +264,7 @@ void Empleados_Metodos::Determinar_tamano()
 		else
 		{
 			size = 0;
-			Lista_Empleados = new Empleados[1];
+			Lista_Empleados = new Empleado[1];
 			ESCRITURA.close();
 			LECTURA.close();
 		}
@@ -289,8 +289,8 @@ void Empleados_Metodos::Llenar()
 			LECTURA >> telefono_t;
 			LECTURA >> dni_t;
 					
-			Lista_Empleados[i].Set_nombre(comp, nombre_t);	
-			Lista_Empleados[i].Set_correo(comp, correo_t);
+			Lista_Empleados[i].Set_nombre(nombre_t);	
+			Lista_Empleados[i].Set_email(correo_t);
 			Lista_Empleados[i].Set_telefono(telefono_t);
 			Lista_Empleados[i].Set_dni(dni_t);
 		}
@@ -311,7 +311,7 @@ void Empleados_Metodos::Guardar()
 		for (int i=0; i<size; i++)
 		{
 			ESCRITURA << Lista_Empleados[i].Get_nombre() << std::endl;
-			ESCRITURA << Lista_Empleados[i].Get_correo() << std::endl;
+			ESCRITURA << Lista_Empleados[i].Get_email() << std::endl;
 			ESCRITURA << Lista_Empleados[i].Get_telefono() << std::endl;
 			ESCRITURA << Lista_Empleados[i].Get_dni() << "\n\n";
 		}

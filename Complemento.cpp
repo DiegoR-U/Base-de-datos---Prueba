@@ -1,34 +1,8 @@
 #include "Complemento.hpp"
 #include <iostream>
 
-Complemento::Complemento()
-	{         
-		temporal = nullptr;
-		size = 0;
-	}
 
-Complemento::~Complemento()
-	{
-		if (temporal != nullptr)
-			delete [] temporal;
-	}
-	
-void Complemento::Set_Complemento_temp(int c)
-	{
-		temporal = new char[c];
-	}
-	
-void Complemento::Set_Complemento_size(int s)
-	{
-		size = s;
-	}
-	
-int Complemento::Get_Complemento_size() const
-	{	
-		return size;
-	}
-
-void Complemento::Copiar_Puntero(char *&x, char *&b, int c)
+void Copiar_Puntero(char *&x, char *&b, int c)
 	{
 		if (x != nullptr && b != nullptr)
 		{
@@ -43,7 +17,7 @@ void Complemento::Copiar_Puntero(char *&x, char *&b, int c)
 		}
 	}
 	
-int Complemento::Longitud_Puntero(char *&x)
+int Longitud_Puntero(char *&x)
 	{
 		int longitud = 0;
 		
@@ -62,8 +36,12 @@ int Complemento::Longitud_Puntero(char *&x)
 		return longitud;
 	}
 
-void Complemento::Memoria_justa_cadena(char *&x, int c, char *llenar)
+void Memoria_justa_cadena(char *&x, int c, char *llenar)
 	{
+
+		char* temporal = nullptr;
+		temporal = new char[c];
+		int size{0};
 
 		if (llenar == nullptr)
 		{
@@ -86,7 +64,7 @@ void Complemento::Memoria_justa_cadena(char *&x, int c, char *llenar)
 		}
 	}
 
-bool Complemento::Comparar_Punteros(char *&x, char *&b, int c)
+bool Comparar_Punteros(char *&x, char *&b, int c)
 	{
 		if (x != nullptr && b != nullptr)
 		{
@@ -110,7 +88,7 @@ bool Complemento::Comparar_Punteros(char *&x, char *&b, int c)
 		}
 	}
 
-void Complemento::Borrar_Asignar_ptr(char *&x)
+void Borrar_Asignar_ptr(char *&x)
 	{
 		if (x != nullptr)
 		{
@@ -119,7 +97,7 @@ void Complemento::Borrar_Asignar_ptr(char *&x)
 		}
 	}
 
-bool Complemento::Contenido_archivo(std::ifstream &file)
+bool Contenido_archivo(std::ifstream &file)
 	{
 		file.seekg(0, std::ios::end);  
 		if (file.tellg() < 1)				//EL ARCHIVO NO TIENE NI 1 LETRA
@@ -136,7 +114,7 @@ bool Complemento::Contenido_archivo(std::ifstream &file)
 		}
 	}
 
-void Complemento::Convertir_mayusculas_minusculas(char &x, bool y)
+void Convertir_mayusculas_minusculas(char &x, bool y)
 	{
 		if (y == 1)				//SI X ES MAYUSCULA CONVERTIRLO EN MINUSCULA
 		{

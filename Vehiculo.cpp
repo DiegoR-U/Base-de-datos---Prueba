@@ -14,30 +14,30 @@ Vehiculo::Vehiculo(Vehiculo &o)
 		
 		if (marcaAuto != nullptr)
 		{
-			int size = comprobar.Longitud_Puntero(marcaAuto);
+			int size = Longitud_Puntero(marcaAuto);
 			marcaAuto = new char[size + 1];
-			comprobar.Copiar_Puntero(o.marcaAuto, marcaAuto, size);
+			Copiar_Puntero(o.marcaAuto, marcaAuto, size);
 		}
 
 		if (placa != nullptr)
 		{
-			int size = comprobar.Longitud_Puntero(placa);
+			int size = Longitud_Puntero(placa);
 			placa = new char[size + 1];
-			comprobar.Copiar_Puntero(o.placa, placa, size);
+			Copiar_Puntero(o.placa, placa, size);
 		}
 
 		if (color != nullptr)
 		{
-			int size = comprobar.Longitud_Puntero(color);
+			int size = Longitud_Puntero(color);
 			color = new char[size + 1];
-			comprobar.Copiar_Puntero(o.color, color, size);
+			Copiar_Puntero(o.color, color, size);
 		}
 	
 		if (estado != nullptr)
 		{
-			int size = comprobar.Longitud_Puntero(estado);
+			int size = Longitud_Puntero(estado);
 			estado = new char[size + 1];
-			comprobar.Copiar_Puntero(o.estado, estado, size);
+			Copiar_Puntero(o.estado, estado, size);
 		}
 
 	}
@@ -54,64 +54,29 @@ Vehiculo::~Vehiculo()
 			delete [] estado;
 	}
 
-void Vehiculo::setMarca(Complemento c, char *llenarmarca)
+void Vehiculo::setMarca(char *llenarmarca)
 	{
-		if (marcaAuto != nullptr)
-			delete [] marcaAuto;
-		c.Set_Complemento_temp(20);
-		if (llenarmarca == nullptr)
-		{
-			c.Memoria_justa_cadena(marcaAuto, 20, nullptr);
-		}
-		else
-		{
-			c.Memoria_justa_cadena(marcaAuto, 20, llenarmarca);
-		}
+		Borrar_Asignar_ptr(marcaAuto);
+		Memoria_justa_cadena(marcaAuto, 20, llenarmarca);
+		
 	}
 
-void Vehiculo::setPlaca(Complemento c, char *llenarplaca)
+void Vehiculo::setPlaca(char *llenarplaca)
 	{
-		if (placa != nullptr)
-			delete [] placa;
-		c.Set_Complemento_temp(8);
-		if (llenarplaca == nullptr)
-		{
-			c.Memoria_justa_cadena(placa, 8, nullptr);
-		}
-		else
-		{
-			c.Memoria_justa_cadena(placa, 8, llenarplaca);
-		}
+		Borrar_Asignar_ptr(placa);
+		Memoria_justa_cadena(placa, 8, nullptr);
 	}
 
-void Vehiculo::setColor(Complemento c, char *llenarcolor)
+void Vehiculo::setColor(char *llenarcolor)
 	{
-		if (color != nullptr)
-			delete [] color;
-		c.Set_Complemento_temp(15);
-		if (llenarcolor == nullptr)
-		{
-			c.Memoria_justa_cadena(color, 15, nullptr);
-		}
-		else
-		{
-			c.Memoria_justa_cadena(color, 15, llenarcolor);
-		}
+		Borrar_Asignar_ptr(color);
+		Memoria_justa_cadena(color, 15, nullptr);
 	}
 
-void Vehiculo::setEstado(Complemento c, char *llenarestado)
+void Vehiculo::setEstado(char *llenarestado)
 	{
-		if (estado != nullptr)
-			delete [] estado;
-		c.Set_Complemento_temp(11);
-		if (llenarestado == nullptr)
-		{
-			c.Memoria_justa_cadena(estado, 11, nullptr);
-		}
-		else
-		{
-			c.Memoria_justa_cadena(estado, 11, llenarestado);
-		}
+		Borrar_Asignar_ptr(estado);
+		Memoria_justa_cadena(estado, 11, nullptr);
 	}
 
 char* Vehiculo::getMarca()

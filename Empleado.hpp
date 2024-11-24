@@ -11,10 +11,10 @@ class Empleado : public Persona{
 	~Empleado();
 	void Set_Contrato(int d=0, int m=0, int y=0);
 	void Set_Nacimiento(int d=0, int m=0, int y=0);
-	void Set_email(Complemento c);
-	void Set_email(Complemento c, char*& llenar);
-	void Set_direccion(Complemento c);
-	void Set_direccion(Complemento c, char*& llenar);
+	void Set_email();
+	void Set_email(char*& llenar);
+	void Set_direccion();
+	void Set_direccion(char*& llenar);
 	void Set_salario(float s);
 	void Set_edad(int e);
 	Fecha& Get_Contrato();

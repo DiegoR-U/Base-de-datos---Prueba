@@ -1,7 +1,6 @@
 #ifndef Ganancias_h
 #define Ganancias_h
 
-#include "Complemento.hpp"
 #include "Fecha.hpp"
 
 class Ganancias {

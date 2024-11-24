@@ -42,19 +42,19 @@ void Vehiculo_Metodos::agregarVehiculo()
 		}
 
 		std::cout << "Ingrese la placa: " << "\n\n";
-		newVehiculo[nroVehiculos].setPlaca(comprobar, nullptr);
+		newVehiculo[nroVehiculos].setPlaca(nullptr);
 		std::cout << "\n\n";
 
 		std::cout << "Ingrese el marca: " << "\n\n";
-		newVehiculo[nroVehiculos].setMarca(comprobar, nullptr);
+		newVehiculo[nroVehiculos].setMarca(nullptr);
 		std::cout << "\n\n";
 
 		std::cout << "Ingrese el color: " << "\n\n";
-		newVehiculo[nroVehiculos].setColor(comprobar, nullptr);
+		newVehiculo[nroVehiculos].setColor(nullptr);
 		std::cout << "\n\n";
 
 		std::cout << "Ingrese el estado: " << "\n\n";
-		newVehiculo[nroVehiculos].setEstado(comprobar, nullptr);
+		newVehiculo[nroVehiculos].setEstado(nullptr);
 		std::cout << "\n\n";
 
 		delete [] listaVehiculos;
@@ -75,9 +75,8 @@ void Vehiculo_Metodos::quitarVehiculo()
 
 			Vehiculo *listaTemporal = new Vehiculo[nroVehiculos - 1];
 			
-			comprobar.Set_Complemento_size(0);
 			std::cout << "Ingrese la placa del vehiculo: " << "\n\n";
-			comprobar.Memoria_justa_cadena(placa_ingresada, 8, nullptr);
+			Memoria_justa_cadena(placa_ingresada, 8, nullptr);
 
 			for (int i = 0; i < nroVehiculos; i++)
 			{
@@ -118,10 +117,9 @@ void Vehiculo_Metodos::buscarVehiculo()
 		{
 			char* placa_ingresada{nullptr};
 			bool confirmar = false;
-				
-			comprobar.Set_Complemento_size(0);
+			
 			std::cout << "Ingrese la placa del vehiculo: " << "\n\n";
-			comprobar.Memoria_justa_cadena(placa_ingresada, 8, nullptr);
+			Memoria_justa_cadena(placa_ingresada, 8, nullptr);
 
 			for (int i = 0; i < nroVehiculos; i++)
 			{
@@ -156,9 +154,8 @@ void Vehiculo_Metodos::modificarEstado()
 			char* placa_ingresada{nullptr};
 			bool confirmar = false;
 				
-			comprobar.Set_Complemento_size(0);
 			std::cout << "Ingrese la placa del vehiculo: " << "\n\n";
-			comprobar.Memoria_justa_cadena(placa_ingresada, 8, nullptr);
+			Memoria_justa_cadena(placa_ingresada, 8, nullptr);
 
 			for (int i = 0; i < nroVehiculos; i++)
 			{
@@ -167,7 +164,7 @@ void Vehiculo_Metodos::modificarEstado()
 					confirmar = true;
 
 					std::cout << "Ingrese el nuevo estado del vehículo" << std::endl;
-					listaVehiculos[i].setEstado(comprobar, nullptr);
+					listaVehiculos[i].setEstado(nullptr);
 					
 					break;
 				}
@@ -205,10 +202,10 @@ void Vehiculo_Metodos::llenarArchivo()
 			LEER >> placa_t;
 			LEER >> estado_t;
 					
-			listaVehiculos[i].setMarca(comprobar, marca_t);	
-			listaVehiculos[i].setColor(comprobar, color_t);
-			listaVehiculos[i].setPlaca(comprobar, placa_t);
-			listaVehiculos[i].setEstado(comprobar, estado_t);
+			listaVehiculos[i].setMarca(marca_t);	
+			listaVehiculos[i].setColor(color_t);
+			listaVehiculos[i].setPlaca(placa_t);
+			listaVehiculos[i].setEstado(estado_t);
 		}
 
 		delete [] marca_t;
@@ -250,7 +247,7 @@ void Vehiculo_Metodos::longitudLista()
 			return; 
 		}
 
-		if (comprobar.Contenido_archivo(LEER))
+		if (Contenido_archivo(LEER))
 		{
 			LEER >> nroVehiculos;
 

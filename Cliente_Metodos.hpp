@@ -20,7 +20,6 @@ class Cliente_Metodos{
 	private:
 	std::ifstream LECTURA;
 	std::ofstream ESCRITURA;
-	Complemento comp;
 	int size;
 	Cliente* Lista_Clientes;
 };
