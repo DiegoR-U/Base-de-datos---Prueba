@@ -1,7 +1,16 @@
 #include "Vehiculo.hpp"
+#include "Complemento.hpp"
 #include <iostream>
 
-//Constructor
+#ifdef _WIN32
+    //#include <windows.h>
+    #define CLEAR_COMMAND "cls"
+#elif defined(__APPLE__) || defined(__MACH__) || defined(__linux__)
+    #include <unistd.h>
+    #include <termios.h>
+    #define CLEAR_COMMAND "clear"
+#endif
+
 Vehiculo::Vehiculo()
 	{
 		marcaAuto = nullptr;
@@ -9,37 +18,16 @@ Vehiculo::Vehiculo()
 		color = nullptr;
 		estado = nullptr;
 	}
-Vehiculo::Vehiculo(Vehiculo &o)
+Vehiculo& Vehiculo::operator=(Vehiculo& o)
 	{
-		
-		if (marcaAuto != nullptr)
+		if( this != &o)
 		{
-			int size = Longitud_Puntero(marcaAuto);
-			marcaAuto = new char[size + 1];
-			Copiar_Puntero(o.marcaAuto, marcaAuto, size);
+			Memoria_justa_cadena(marcaAuto, 20, o.getMarca());
+			Memoria_justa_cadena(placa, 20, o.getPlaca());
+			Memoria_justa_cadena(color, 20, o.getColor());
+			Memoria_justa_cadena(estado, 20, o.getEstado());
 		}
-
-		if (placa != nullptr)
-		{
-			int size = Longitud_Puntero(placa);
-			placa = new char[size + 1];
-			Copiar_Puntero(o.placa, placa, size);
-		}
-
-		if (color != nullptr)
-		{
-			int size = Longitud_Puntero(color);
-			color = new char[size + 1];
-			Copiar_Puntero(o.color, color, size);
-		}
-	
-		if (estado != nullptr)
-		{
-			int size = Longitud_Puntero(estado);
-			estado = new char[size + 1];
-			Copiar_Puntero(o.estado, estado, size);
-		}
-
+		return *this;
 	}
 	
 Vehiculo::~Vehiculo()

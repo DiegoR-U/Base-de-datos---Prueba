@@ -4,7 +4,7 @@
 #include "Complemento.hpp"
 
 class Vehiculo{
-private:
+protected:
 	
 	char *marcaAuto;
 	char *placa;
@@ -14,8 +14,8 @@ private:
 public:
 	
 	Vehiculo();
-	Vehiculo(Vehiculo &o);
 	~Vehiculo();
+	Vehiculo& operator=(Vehiculo& o);
 	 
 	void setMarca(char* llenarMarca);
 	void setPlaca(char* llenarPlaca);
