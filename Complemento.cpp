@@ -1,7 +1,6 @@
 #include "Complemento.hpp"
 #include <iostream>
 
-
 void Copiar_Puntero(char *&x, char *&b, int c)
 	{
 		if (x != nullptr && b != nullptr)
@@ -19,73 +18,69 @@ void Copiar_Puntero(char *&x, char *&b, int c)
 	
 int Longitud_Puntero(char *&x)
 	{
-		int longitud = 0;
-		
-		if(x != nullptr)
+		if (x == nullptr) 
 		{
-			while ( x[longitud] != '\0' )
-			{
-				longitud ++;
-			}
-		}
-		else
+        	std::cerr << "Error: Puntero nulo. Longitud no válida." << std::endl;
+        	return 0;
+    	}
+
+   	 	int longitud = 0;
+    	while (x[longitud] != '\0') 
 		{
-			std::cout << "No se puede hallar la longitud de un puntero vacio" << std::endl;
+        	longitud++;
 		}
-		
-		return longitud;
+    	return longitud;
 	}
 
-void Memoria_justa_cadena(char *&x, int c, char *llenar)
+void Memoria_justa_cadena(char *&x, int capacidad, char *llenar)
 	{
 
-		char* temporal = nullptr;
-		temporal = new char[c];
-		int size{0};
-
-		if (llenar == nullptr)
+		if (capacidad <= 0) 
 		{
-			std::cin.ignore();				//importante poner antes de un getline
-			std::cin.getline(temporal, c, '\n'); //
-			
+			std::cout << "Error: Capacidad no válida." << std::endl;
+			return;
+		}
+
+		if (llenar != nullptr) 
+		{
+			delete[] llenar; 
+		}
+
+		char* temporal = new char[capacidad + 1];
+		int size = 0;
+
+		if (llenar == nullptr) 
+		{
+			std::cin.ignore();
+			std::cin.getline(temporal, capacidad + 1, '\n');
 			size = Longitud_Puntero(temporal);
-			
-			x = new char[size+1];
-		
-			Copiar_Puntero(temporal, x, size);
-		}
-		else
+		} 
+		else 
 		{
-			size = Longitud_Puntero(llenar);
-			
-			x = new char[size+1];
-			
-			Copiar_Puntero(llenar, x, size);
+			size = Longitud_Puntero(x);
+			llenar = new char[size + 1];
+			for (int i = 0; i < size; i++)
+			{
+				llenar[i] = temporal[i];
+			}
 		}
 	}
 
-bool Comparar_Punteros(char *&x, char *&b, int c)
+bool Comparar_Punteros(const char* ptr1, const char* ptr2, int longitud) 
 	{
-		if (x != nullptr && b != nullptr)
+		if (ptr1 == nullptr || ptr2 == nullptr) 
 		{
-			int verificador = 0;
-			
-			for (int i=0; i<c+1; i++)
-			{
-				if (*(x+i) == *(b+i))
-					verificador++;
+			std::cerr << "Error: Uno o ambos punteros son nulos. No se pueden comparar." << std::endl;
+			return false;
+		}
+
+		for (int i = 0; i < longitud; i++) {
+			if (ptr1[i] != ptr2[i]) {
+				return false; //Diferentes
 			}
-			
-			if (verificador == c+1)
-				return 1;				//SON IGUALES
-			else
-				return 0;				//SON DIFERENTES
 		}
-		else
-		{
-			std::cout << "Antes inicialice ambos punteros para compararlos" << std::endl;
-			return 0;
-		}
+
+		return true; //Iguales
 	}
 
 void Borrar_Asignar_ptr(char *&x)
@@ -116,21 +111,19 @@ bool Contenido_archivo(std::ifstream &file)
 
 void Convertir_mayusculas_minusculas(char &x, bool y)
 	{
-		if (y == 1)				//SI X ES MAYUSCULA CONVERTIRLO EN MINUSCULA
+		if (y)  //Convertir minúscula
 		{
-			if (int(x) >= 65 && int(x) <= 90)
+			if (x >= 'A' && x <= 'Z')  
 			{
-				x = char(int(x)+32);
+				x = x + ('a' - 'A');  
 			}
-			else {}
 		}
-		else						//SI X ES MINUSCULA CONVERTIRLO A MAYUSCULA
+		else  //Convertir mayúscula
 		{
-			if (int(x) >= 97 && int(x) <= 122)
+			if (x >= 'a' && x <= 'z')  
 			{
-				x = char(int(x)-32);
+				x = x - ('a' - 'A');  
 			}
-			else {}
 		}
 	}
 
