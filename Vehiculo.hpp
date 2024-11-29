@@ -14,8 +14,9 @@ protected:
 public:
 	
 	Vehiculo();
-	~Vehiculo();
-	Vehiculo& operator=(Vehiculo& o);
+	Vehiculo(Vehiculo&other);
+	virtual ~Vehiculo();
+	
 	 
 	void setMarca(char* llenarMarca);
 	void setPlaca(char* llenarPlaca);
@@ -27,5 +28,6 @@ public:
 	char* getColor();
 	char* getEstado();
 
+	virtual void mostrarInformacion() const;
 };
 #endif

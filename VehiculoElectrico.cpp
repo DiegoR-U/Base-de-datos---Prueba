@@ -17,6 +17,23 @@ vElectrico::vElectrico() : Vehiculo()
     tipoCargador = nullptr;
 }
 
+vElectrico::vElectrico(int capacidadBateria, float tiempoCarga,char* tipoC,
+                       char* marca, char* placa, char* color, char* estado)
+    :Vehiculo(), 
+    capacidadBateria(capacidadBateria), tiempoCarga(tiempoCarga), tipoCargador(nullptr)
+{
+    if (tipoCargador != nullptr) 
+    {
+        tipoC = new char[Longitud_Puntero(tipoCargador) + 1];
+        Copiar_Puntero(tipoC, tipoCargador, Longitud_Puntero(tipoCargador));
+    }
+
+    setMarca(marca);
+    setPlaca(placa);
+    setColor(color);
+    setEstado(estado);
+}
+
 vElectrico::~vElectrico()
 {
     if ( tipoCargador != nullptr )
@@ -71,4 +88,13 @@ float vElectrico::getTiempoCarga()
 char* vElectrico::getTipoCargador()
 {
     return tipoCargador;
+}
+
+void vElectrico::mostrarInformacion() const
+{
+    std::cout << "Vehículo Eléctrico";
+    Vehiculo::mostrarInformacion();
+    std::cout << "Capacidad de batería: " << capacidadBateria 
+              << "Tiempo de Carga: " << tiempoCarga 
+              << "Tipo de Cargador: " << tipoCargador << std::endl;
 }

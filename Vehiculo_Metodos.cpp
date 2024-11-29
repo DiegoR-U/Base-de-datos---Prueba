@@ -4,271 +4,228 @@
 Vehiculo_Metodos::Vehiculo_Metodos()
 	{
 	
-		listaVehiculos = nullptr;
+		listaVehiculos = new Vehiculo*[capacidad];
 		nroVehiculos = 0;
+		capacidad = 1;
 
-	}
-
-Vehiculo_Metodos::Vehiculo_Metodos(Vehiculo_Metodos &o)
-	{
-		nroVehiculos = o.nroVehiculos;
-
-		listaVehiculos = new Vehiculo[nroVehiculos + 1];
-
-		for (int i = 0; i < nroVehiculos; ++i)
-		{
-			*(listaVehiculos + i) = *(o.listaVehiculos + i);
-		}
 	}
 
 Vehiculo_Metodos::~Vehiculo_Metodos()
 	{
 
-		if (listaVehiculos != nullptr)
-		{
-			delete [] listaVehiculos;
-		}	
+		for (int i = 0; i < nroVehiculos; ++i) {
+            delete listaVehiculos[i];
+        }
+        delete[] listaVehiculos;
 	
-
 	}
 
 void Vehiculo_Metodos::agregarVehiculo()
 	{
+		if (nroVehiculos == capacidad) {
+            capacidad *= 2;
+            Vehiculo** newVehiculo = new Vehiculo*[capacidad];
+            for (int i = 0; i < nroVehiculos; ++i) {
+                newVehiculo[i] = listaVehiculos[i];
+            }
+            delete[] listaVehiculos;
+            listaVehiculos = newVehiculo;
+        }
+		
+		int tipoVehiculo;
 
-		Vehiculo *newVehiculo = new Vehiculo[nroVehiculos + 1];
-		for (int i = 0; i < nroVehiculos; i++)
-		{
-			newVehiculo[i] = listaVehiculos[i];
-		}
+		std::cout << "Ingrese el tipo de Vehiculo que desea agregar: \n";
+		std::cout << "1. Electrico \n";
+		std::cout << "2. Combustible \n";
+		std::cin >> tipoVehiculo;
+
+		char *placa, *marca, *color, *estado;
 
 		std::cout << "Ingrese la placa: " << "\n\n";
-		newVehiculo[nroVehiculos].setPlaca(nullptr);
+		Memoria_justa_cadena(placa, 7, nullptr);
 		std::cout << "\n\n";
 
 		std::cout << "Ingrese el marca: " << "\n\n";
-		newVehiculo[nroVehiculos].setMarca(nullptr);
+		Memoria_justa_cadena(marca, 20, nullptr);
 		std::cout << "\n\n";
 
 		std::cout << "Ingrese el color: " << "\n\n";
-		newVehiculo[nroVehiculos].setColor(nullptr);
+		Memoria_justa_cadena(color, 20, nullptr);
 		std::cout << "\n\n";
 
 		std::cout << "Ingrese el estado: " << "\n\n";
-		newVehiculo[nroVehiculos].setEstado(nullptr);
+		Memoria_justa_cadena(estado, 20, nullptr);
 		std::cout << "\n\n";
 
-		delete [] listaVehiculos;
-
-		listaVehiculos = newVehiculo;
-
-		++nroVehiculos;
-
-	}
-
-void Vehiculo_Metodos::quitarVehiculo()
-	{
-		if (listaVehiculos != nullptr)
-		{
-			char* placa_ingresada{nullptr};
-			bool confirmar = false;
-			int indice = 0;
-
-			Vehiculo *listaTemporal = new Vehiculo[nroVehiculos - 1];
+		if (tipoVehiculo == 1)   								//Electrico
+		{	
+			int bateria;
+			float tiempoCarga;
+			char *tipoCargador;
 			
-			std::cout << "Ingrese la placa del vehiculo: " << "\n\n";
-			Memoria_justa_cadena(placa_ingresada, 8, nullptr);
+			std::cout << "Ingrese la capacidad de bateria: " << "\n\n";
+			std::cin >> bateria;
+			std::cout << "\n\n";
 
-			for (int i = 0; i < nroVehiculos; i++)
-			{
-				if (listaVehiculos[i].getPlaca() == placa_ingresada && !confirmar)
-				{
-					confirmar = true;
-					continue;
-				}
-				
-				listaTemporal[indice] = listaVehiculos[i];
-				indice ++; 
-			}
+			std::cout << "Ingrese el timepo de Carga: " << "\n\n";
+			std::cin >> tiempoCarga;
+			std::cout << "\n\n";
 
-			if (confirmar)
-			{
-				delete [] listaVehiculos;
-				listaVehiculos = listaTemporal;
-				nroVehiculos --;
-				std::cout << "Vehiculo eliminado" << std::endl;
-			}
-			else
-			{
-				std::cout << "Vehiculo NO encontrado" << std::endl;
-				delete [] listaTemporal;
-			}
+			std::cout << "Ingrese el tipo de cargador: " << "\n\n";
+			Memoria_justa_cadena(tipoCargador, 30, nullptr);
+			std::cout << "\n\n";
 
+			Vehiculo *tipo = new vElectrico(bateria, tiempoCarga, tipoCargador,
+													marca, placa, color, estado);
+			listaVehiculos[nroVehiculos++] = tipo;
+			
+			std::cout << "Vehiculo Electrico agregado correctamente" << "\n\n";
 		}
+		else if (tipoVehiculo == 2)
+		{	
+			int nCilidros;
+			int cTanque;
+			char *tipoCombustible;
+			
+			std::cout << "Ingrese el numero de cilindros: " << "\n\n";
+			std::cin >> nCilidros;
+			std::cout << "\n\n";
+
+			std::cout << "Ingrese la capacidad del Tanque: " << "\n\n";
+			std::cin >> cTanque;
+			std::cout << "\n\n";
+
+			std::cout << "Ingrese el tipo de Combustible: " << "\n\n";
+			Memoria_justa_cadena(tipoCombustible, 30, nullptr);
+			std::cout << "\n\n";
+
+			Vehiculo *tipo = new vCombustible(cTanque, nCilidros, tipoCombustible,
+													marca, placa, color, estado);
+			listaVehiculos[nroVehiculos++] = tipo;
+			
+			std::cout << "Vehiculo Combustible agregado correctamente" << "\n\n";
+		}		
 		else
 		{
-			std::cout << "No hay vehiculos por eliminar" << std::endl;
+				std::cout << "Opcion no valida" << "\n\n";
 		}
 
 	}
 
-void Vehiculo_Metodos::buscarVehiculo()
+bool Vehiculo_Metodos::quitarVehiculo(char* placa)
 	{
-		if (listaVehiculos != nullptr)
+		for (int i = 0; i < nroVehiculos; ++i) 
 		{
-			char* placa_ingresada{nullptr};
-			bool confirmar = false;
 			
-			std::cout << "Ingrese la placa del vehiculo: " << "\n\n";
-			Memoria_justa_cadena(placa_ingresada, 8, nullptr);
+			char* placaVehiculo = listaVehiculos[i]->getPlaca();
+			char* placaBuscada = placa;
 
-			for (int i = 0; i < nroVehiculos; i++)
+			bool existen = true;
+			while (*placaVehiculo != '\0' && *placaBuscada != '\0') 
 			{
-				if (listaVehiculos[i].getPlaca() == placa_ingresada && !confirmar)
+				if (*placaVehiculo != *placaBuscada) 
 				{
-					confirmar = true;
-					std::cout << "Vehiculo encontrado:" << std::endl;
-					std::cout << "Marca: " << listaVehiculos[i].getMarca() << std::endl;
-					std::cout << "Color: " << listaVehiculos[i].getColor() << std::endl;
-					std::cout << "Placa: " << listaVehiculos[i].getPlaca() << std::endl;
-					std::cout << "Estado: " << listaVehiculos[i].getEstado() << std::endl;
+					existen = false;
 					break;
 				}
+				placaVehiculo++;
+				placaBuscada++;
 			}
 
-			if (!confirmar)
+			if (existen && *placaVehiculo == *placaBuscada) 
 			{
-				std::cout << "Vehiculo NO encontrado" << std::endl;
-			}
-				
-		}
-		else
-		{
-			std::cout << "No hay vehiculos por buscar" << std::endl;
-		}
-	}
+				delete listaVehiculos[i];
 
-void Vehiculo_Metodos::modificarEstado()
-	{
-		if (listaVehiculos != nullptr)
-		{
-			char* placa_ingresada{nullptr};
-			bool confirmar = false;
-				
-			std::cout << "Ingrese la placa del vehiculo: " << "\n\n";
-			Memoria_justa_cadena(placa_ingresada, 8, nullptr);
-
-			for (int i = 0; i < nroVehiculos; i++)
-			{
-				if (listaVehiculos[i].getPlaca() == placa_ingresada && !confirmar)
+				for (int j = i; j < nroVehiculos - 1; ++j)
 				{
-					confirmar = true;
-
-					std::cout << "Ingrese el nuevo estado del vehículo" << std::endl;
-					listaVehiculos[i].setEstado(nullptr);
-					
-					break;
+					listaVehiculos[j] = listaVehiculos[j + 1];
 				}
-			}
 
-			if (!confirmar)
-			{
-				std::cout << "Vehiculo NO encontrado" << std::endl;
+				nroVehiculos--;
+				std::cout << "Vehículo con placa: " << placa << " eliminado." << std::endl;
+				return true;
 			}
-				
+		}
+
+    std::cout << "Vehículo no encontrado." << std::endl;
+    return false;
+}
+
+Vehiculo* Vehiculo_Metodos::buscarVehiculo(char* placa)
+	{
+		for (int i = 0; i < nroVehiculos; ++i) 
+		{
+        	char* placaVehiculo = listaVehiculos[i]->getPlaca();
+        	char* placaBuscada = placa;
+
+    		bool existe = true;
+
+        	while (*placaVehiculo != '\0' && *placaBuscada != '\0') 
+			{
+            	if (*placaVehiculo != *placaBuscada) 
+				{
+                	existe = false;
+                	break;
+            	}
+            	
+				placaVehiculo++;
+            	placaBuscada++;
+        	}
+
+        	if (existe && *placaVehiculo == *placaBuscada) {
+            	return listaVehiculos[i];     //Imprimir los datos del vehículo buscado
+        	}
+    	}
+
+		std::cout << "No encontrado." << std::endl;
+		return nullptr;
+	}
+
+bool Vehiculo_Metodos::modificarEstado(char* placa, char* nuevoEstado)
+	{
+		for (int i = 0; i < nroVehiculos; ++i) 
+		{
+        	char* placaVehiculo = listaVehiculos[i]->getPlaca();
+        	char* placaBuscada = placa;
+
+    		bool existe = true;
+
+        	while (*placaVehiculo != '\0' && *placaBuscada != '\0') 
+			{
+            	if (*placaVehiculo != *placaBuscada) 
+				{
+                	existe = false;
+                	break;
+            	}
+            	
+				placaVehiculo++;
+            	placaBuscada++;
+        	}
+
+        	if (existe && *placaVehiculo == *placaBuscada) {
+            	listaVehiculos[i]->setEstado(nuevoEstado);  
+				std::cout << "Estado del vehículo con placa " << placa 
+							<< " modificado a " << nuevoEstado << "." << std::endl;
+                return true;
+        	}
+    	}
+
+		std::cout << "No encontrado" << std::endl;
+        return false;
+	}
+
+void Vehiculo_Metodos::mostrarVehiculos()
+	{
+		if (nroVehiculos == 0)
+		{
+			std::cout << "Aun no hay vehiculos registrados" << "\n\n";
+			return;
 		}
 		else
 		{
-			std::cout << "No hay vehiculos por buscar" << std::endl;
-		}
-	}
-
-void Vehiculo_Metodos::llenarArchivo()
-	{
-		LEER.open("Vehiculos.txt");
-		
-		int size;
-		
-		char *marca_t = new char[15];
-		char *estado_t =  new char[11];
-		char *placa_t = new char[8];
-		char *color_t = new char[20];
-			
-		LEER >> size;
-		
-		for (int i=0; i<size; i++)
-		{
-			LEER >> marca_t;
-			LEER >> color_t;
-			LEER >> placa_t;
-			LEER >> estado_t;
-					
-			listaVehiculos[i].setMarca(marca_t);	
-			listaVehiculos[i].setColor(color_t);
-			listaVehiculos[i].setPlaca(placa_t);
-			listaVehiculos[i].setEstado(estado_t);
-		}
-
-		delete [] marca_t;
-		delete [] color_t;
-		delete [] placa_t;
-		delete [] estado_t;
-
-		LEER.close();
-	}
-
-void Vehiculo_Metodos::guardarArchivo()
-	{
-		LEER.open("Vehiculos.txt");
-		ESCRIBIR.open("Vehiculos_temp.txt", std::ios::app);
-
-		ESCRIBIR << nroVehiculos << "\n\n";
-		
-		for (int i=0; i < nroVehiculos; i++)
-		{
-			ESCRIBIR << listaVehiculos[i].getMarca() << std::endl;
-			ESCRIBIR << listaVehiculos[i].getColor() << std::endl;
-			ESCRIBIR << listaVehiculos[i].getPlaca() << std::endl;
-			ESCRIBIR << listaVehiculos[i].getEstado() << "\n\n";
-		}
-
-		ESCRIBIR.close();
-		LEER.close();
-		
-		std::remove("Vehiculos.txt");
-		std::rename("Vehiculos_temp.txt", "Vehiculos.txt");		
-	}
-
-void Vehiculo_Metodos::longitudLista()
-	{
-    	LEER.open("Vehiculos.txt", std::ios::in);
-
-		if (!LEER) {
-			std::cout << "Error al abrir el archivo de vehículos para lectura." << std::endl;
-			return; 
-		}
-
-		if (Contenido_archivo(LEER))
-		{
-			LEER >> nroVehiculos;
-
-			if (nroVehiculos > 0)
+			for (int i = 0; i < nroVehiculos; ++i) 
 			{
-				listaVehiculos = new Vehiculo[nroVehiculos];
-				llenarArchivo(); 
-			}
-			else
-			{
-				std::cout << "El archivo no contiene vehículos o el tamaño es inválido." << std::endl;
-				nroVehiculos = 0;  
-				listaVehiculos = nullptr; 
+            	listaVehiculos[i]->mostrarInformacion();
 			}
 		}
-		else
-		{
-			nroVehiculos = 0;
-			listaVehiculos = nullptr;
-			std::cout << "No hay vehículos en el archivo." << std::endl;
-		}
-
-		LEER.close();
 	}

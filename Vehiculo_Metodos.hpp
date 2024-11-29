@@ -1,33 +1,28 @@
 #ifndef Vehiculo_Metodos_h
 #define Vehiculo_Metodos_h
 
-#include <fstream>
 #include "Vehiculo.hpp"
+#include "VehiculoElectrico.hpp"
+#include "VehiculoCombustible.hpp"
 #include "Complemento.hpp"
 
 class Vehiculo_Metodos{	
 private:
-    
-    std::ifstream LEER;
-    std::ofstream ESCRIBIR;
 
-    Vehiculo *listaVehiculos;
+    Vehiculo **listaVehiculos;
     int nroVehiculos;
+    int capacidad;
 
 public:
    
     Vehiculo_Metodos();
-    Vehiculo_Metodos(Vehiculo_Metodos &o); 
     ~Vehiculo_Metodos();
     
-    
     void agregarVehiculo();
-    void quitarVehiculo();
-    void buscarVehiculo();
-    void modificarEstado();
-    void llenarArchivo();
-    void guardarArchivo();
-    void longitudLista();
+    void mostrarVehiculos();
+    bool quitarVehiculo(char* placa);
+    Vehiculo* buscarVehiculo(char* placa);
+    bool modificarEstado(char* placa, char* nuevoEstado);
 	
 };
 

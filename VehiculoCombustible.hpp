@@ -1,33 +1,35 @@
+
 #ifndef VehiculoCombustible_h
 #define VehiculoCombustible_h
 
-#include "Vehiculo.hpp"
 #include "Complemento.hpp"
+#include "Vehiculo.hpp"
 
 class vCombustible : public Vehiculo
 {
     private:
         int capacidadTanque; 
-        int numeroCilindros; 
-        char* tipoTransmision;      // (manual, automática)  
+        int numeroCilindros;       
         char* tipoCombustible;
 
     public:
         
         vCombustible();
+        vCombustible(int capacidadTanque, int numerocilindros, char* tipo, 
+                    char* marca, char* placa, char* color, char* estado);
         ~vCombustible();
-        
+
         vCombustible& operator=(vCombustible& other);
         
         void setcapacidadTanque(int capacidadTanque);
         void setNumeroCilindros(int numeroCilindros);
-        void setTipoTransmision(char* transmision);
         void setTipoCombustible(char* combustible);
 
         int getcapacidadTanque();
         int getNumeroCilindros();
-        char* getTipoTransmision();
         char* getTipoCombustible();
+
+        void mostrarInformacion() const override;
 
 };
 

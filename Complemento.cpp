@@ -53,16 +53,18 @@ void Memoria_justa_cadena(char *&x, int capacidad, char *llenar)
 		{
 			std::cin.ignore();
 			std::cin.getline(temporal, capacidad + 1, '\n');
+			
 			size = Longitud_Puntero(temporal);
+			
+			x = new char[size + 1];
+
+			Copiar_Puntero(temporal, x, size);
 		} 
 		else 
 		{
-			size = Longitud_Puntero(x);
-			llenar = new char[size + 1];
-			for (int i = 0; i < size; i++)
-			{
-				llenar[i] = temporal[i];
-			}
+			size = Longitud_Puntero(llenar);
+			x = new char[size + 1];
+			Copiar_Puntero(llenar , x, size);
 		}
 	}
 
